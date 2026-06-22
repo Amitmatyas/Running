@@ -898,9 +898,9 @@ const SURFACE = {
 };
 
 const SURFACE_META = {
-  [SURFACE.TREADMILL]: { label: "הליכון", icon: "🏃‍♂️🔁", className: "treadmill" },
-  [SURFACE.OUTDOOR]:   { label: "שטח",    icon: "🌳",      className: "outdoor"   },
-  [SURFACE.FREE]:      { label: "בחירה חופשית (עדיף שטח שטוח/הליכון)", icon: "🔀", className: "free" },
+  [SURFACE.TREADMILL]: { label: "הליכון", className: "treadmill" },
+  [SURFACE.OUTDOOR]:   { label: "שטח",      className: "outdoor"   },
+  [SURFACE.FREE]:      { label: "בחירה חופשית (עדיף שטח שטוח/הליכון)", className: "free" },
 };
 
 function surfaceLabel(surfaceKey) {
@@ -959,15 +959,15 @@ const MILESTONES = [
 // ללא ריצה). חמישי = מנוחה מוחלטת.
 // ============================================================
 const BASE_WEEK_TEMPLATE = {
-  1: { type: "strength",      icon: "🏋️", title: "אימון חדר כושר", desc: "אימון חדר כושר (פלג גוף עליון). ללא ריצה." },
-  3: { type: "strength",      icon: "🏋️", title: "אימון חדר כושר", desc: "אימון חדר כושר (פלג גוף עליון). ללא ריצה." },
-  4: { type: "legs",          icon: "🦵", title: "אימון רגליים",   desc: "אימון רגליים בחדר כושר. ללא ריצה." },
-  5: { type: "rest",          icon: "🔴", title: "מנוחה מוחלטת",   desc: "מנוחה מוחלטת. אין חדר כושר ואין ריצה. התאוששות שרירית מלאה." },
+  1: { type: "strength", title: "אימון חדר כושר", desc: "אימון חדר כושר (פלג גוף עליון). ללא ריצה." },
+  3: { type: "strength", title: "אימון חדר כושר", desc: "אימון חדר כושר (פלג גוף עליון). ללא ריצה." },
+  4: { type: "legs",     title: "אימון רגליים",   desc: "אימון רגליים בחדר כושר. ללא ריצה." },
+  5: { type: "rest",     title: "מנוחה מוחלטת",   desc: "מנוחה מוחלטת. אין חדר כושר ואין ריצה. התאוששות שרירית מלאה." },
 };
 
 // ============================================================
 // תוכן ספציפי ליום שני/שישי/שבת בכל שבוע - מהתוכנית המעודכנת (21 שבועות).
-// כל רשומה: { type, title, icon, desc, distanceKm, paceTarget ([min,max] בדק'/ק"מ), structure, surface }
+// כל רשומה: { type, title, desc, distanceKm, paceTarget ([min,max] בדק'/ק"מ), structure, surface }
 // מבנה: WEEKLY_RUN_CONTENT[weekNum] = { 2: {...}, 6: {...}, 7: {...} }
 // יום 2 = שני (הליכון), יום 6 = שישי (חופשי - עדיף שטח שטוח/הליכון), יום 7 = שבת (שטח)
 // ============================================================
@@ -979,17 +979,17 @@ for (let w = 1; w <= 4; w++) {
   const isDeload = w === 4;
   WEEKLY_RUN_CONTENT[w] = {
     2: {
-      type: "run", icon: "🏃", title: "אינטרוולים קצרים", surface: SURFACE.TREADMILL,
+      type: "run", title: "אינטרוולים קצרים", surface: SURFACE.TREADMILL,
       desc: "חימום 2 ק\"מ קל. לאחר מכן 6 חזרות של 400 מטר בקצב מהיר (4:30–4:40 דק'/ק\"מ), עם 90 שניות הליכה מוחלטת בין חזרה לחזרה. סיים ב-1 ק\"מ שחרור קליל. מומלץ על הליכון (או מסלול שטוח מאוד) - בקרת קצב מדויקת ביותר.",
       distanceKm: 5.4, paceTarget: [4.5, 4.667], structure: "חימום 2 ק\"מ + 6×400מ' (4:30–4:40/ק\"מ, מנוחה 90ש') + שחרור 1 ק\"מ",
     },
     6: {
-      type: "run", icon: "🏃", title: "ריצת התאוששות", surface: SURFACE.FREE,
+      type: "run", title: "ריצת התאוששות", surface: SURFACE.FREE,
       desc: "5 ק\"מ בקצב איטי ונוח (6:05–6:15 דק'/ק\"מ). בחירה חופשית, אך עדיף שטח שטוח/הליכון - הריצה חייבת להיות איטית מאוד כדי להזרים דם אחרי אימון הרגליים.",
       distanceKm: 5, paceTarget: [6.083, 6.25], structure: "5 ק\"מ קצב נוח, התאוששות",
     },
     7: {
-      type: "run", icon: "🏃", title: "ריצת נפח", surface: SURFACE.OUTDOOR,
+      type: "run", title: "ריצת נפח", surface: SURFACE.OUTDOOR,
       desc: `ריצה רציפה בקצב נוח ואחיד (5:45–5:55 דק'/ק"מ). ${satKm} ק"מ. בשטח - הרגליים והמפרקים חייבים להתרגל לתנאי המירוץ האמיתיים.` + (isDeload ? " שבוע הפחתת עומס (דילואד) - מרחק מופחת לאיסוף כוחות." : ""),
       distanceKm: satKm, paceTarget: [5.75, 5.917], structure: `${satKm} ק"מ רציפים, קצב אחיד`,
     },
@@ -998,7 +998,7 @@ for (let w = 1; w <= 4; w++) {
 
 // --- עדכון ספציפי ליום 1 (שני, שבוע 1) - האימון שתועד בפועל, לפי רישום המתאמן ---
 WEEKLY_RUN_CONTENT[1][2] = {
-  type: "run", icon: "🏃", title: "אינטרוולים קצרים", surface: SURFACE.TREADMILL,
+  type: "run", title: "אינטרוולים קצרים", surface: SURFACE.TREADMILL,
   desc: "חימום 2 ק\"מ ריצה קלה. לאחר מכן 7 חזרות של 400 מטר בקצב 4:30–4:40 דק'/ק\"מ, עם 90 שניות הליכה בין חזרה לחזרה (6 הפסקות הליכה בין 7 החזרות). סיים ב-1 ק\"מ ריצה קלה לשחרור.",
   distanceKm: 4.8, paceTarget: [4.5, 4.667],
   structure: "חימום 2 ק\"מ + 7×400מ' (4:30–4:40/ק\"מ, הליכה 90ש' בין חזרות) + שחרור 1 ק\"מ",
@@ -1006,90 +1006,90 @@ WEEKLY_RUN_CONTENT[1][2] = {
 
 // --- שלב 2: סף חומצת חלב ופיתוח מהירות (שבועות 5-9) ---
 WEEKLY_RUN_CONTENT[5] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ, עם 2 דקות מנוחה (הליכה/ג'וגינג קל) בין חזרה לחזרה. סיים ב-1 ק\"מ שחרור.", distanceKm: 6.2, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 4×800מ' (4:45/ק\"מ, מנוחה 2 דק') + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 3 ק\"מ בקצב טמפו מאתגר של 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור איטי.", distanceKm: 6, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 3 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "8 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 8, paceTarget: [5.5, 5.75], structure: "8 ק\"מ נוח" },
+  2: { type: "run", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ, עם 2 דקות מנוחה (הליכה/ג'וגינג קל) בין חזרה לחזרה. סיים ב-1 ק\"מ שחרור.", distanceKm: 6.2, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 4×800מ' (4:45/ק\"מ, מנוחה 2 דק') + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 3 ק\"מ בקצב טמפו מאתגר של 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור איטי.", distanceKm: 6, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 3 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
+  7: { type: "run", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "8 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 8, paceTarget: [5.5, 5.75], structure: "8 ק\"מ נוח" },
 };
 WEEKLY_RUN_CONTENT[6] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ (2 דק' מנוחה). סיים ב-1 ק\"מ שחרור.", distanceKm: 6.2, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 4×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 3.5 ק\"מ בקצב טמפו 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור.", distanceKm: 6.5, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 3.5 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "9 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 9, paceTarget: [5.5, 5.75], structure: "9 ק\"מ נוח" },
+  2: { type: "run", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ (2 דק' מנוחה). סיים ב-1 ק\"מ שחרור.", distanceKm: 6.2, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 4×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 3.5 ק\"מ בקצב טמפו 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור.", distanceKm: 6.5, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 3.5 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
+  7: { type: "run", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "9 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 9, paceTarget: [5.5, 5.75], structure: "9 ק\"מ נוח" },
 };
 WEEKLY_RUN_CONTENT[7] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 5 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ (2 דק' מנוחה). סיים ב-1 ק\"מ שחרור.", distanceKm: 7, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 5×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 4 ק\"מ בקצב טמפו 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור.", distanceKm: 7, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 4 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "10 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 10, paceTarget: [5.5, 5.75], structure: "10 ק\"מ נוח" },
+  2: { type: "run", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 5 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ (2 דק' מנוחה). סיים ב-1 ק\"מ שחרור.", distanceKm: 7, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 5×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 4 ק\"מ בקצב טמפו 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור.", distanceKm: 7, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 4 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
+  7: { type: "run", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "10 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 10, paceTarget: [5.5, 5.75], structure: "10 ק\"מ נוח" },
 };
 WEEKLY_RUN_CONTENT[8] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ (2 דק' מנוחה). סיים ב-1 ק\"מ שחרור.", distanceKm: 6.2, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 4×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 4 ק\"מ בקצב טמפו 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור.", distanceKm: 7, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 4 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "10.5 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 10.5, paceTarget: [5.5, 5.75], structure: "10.5 ק\"מ נוח" },
+  2: { type: "run", title: "אינטרוולים ממושכים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ (2 דק' מנוחה). סיים ב-1 ק\"מ שחרור.", distanceKm: 6.2, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 4×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר (טמפו)", surface: SURFACE.TREADMILL, desc: "1.5 ק\"מ חימום קל. לאחר מכן 4 ק\"מ בקצב טמפו 5:10 דק'/ק\"מ. סיים ב-1.5 ק\"מ שחרור.", distanceKm: 7, paceTarget: [5.167, 5.167], structure: "חימום 1.5 ק\"מ + 4 ק\"מ טמפו (5:10/ק\"מ) + שחרור 1.5 ק\"מ" },
+  7: { type: "run", title: "ריצת נפח", surface: SURFACE.OUTDOOR, desc: "10.5 ק\"מ בקצב נוח (סביב 5:40 דק'/ק\"מ).", distanceKm: 10.5, paceTarget: [5.5, 5.75], structure: "10.5 ק\"מ נוח" },
 };
 WEEKLY_RUN_CONTENT[9] = { // שבוע דילואד - שילוב שלבים
-  2: { type: "run", icon: "🏃", title: "אינטרוולים (דילואד)", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ. סיים ב-1 ק\"מ שחרור. שבוע הפחתת עומס.", distanceKm: 4.6, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 3×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "ריצת התאוששות", surface: SURFACE.FREE, desc: "ריצת התאוששות קלה של 5 ק\"מ.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ קל" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח מופחתת", surface: SURFACE.OUTDOOR, desc: "ריצת נפח מופחתת של 7 ק\"מ קלים.", distanceKm: 7, paceTarget: null, structure: "7 ק\"מ קל" },
+  2: { type: "run", title: "אינטרוולים (דילואד)", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 800 מטר בקצב 4:45 דק'/ק\"מ. סיים ב-1 ק\"מ שחרור. שבוע הפחתת עומס.", distanceKm: 4.6, paceTarget: [4.75, 4.75], structure: "חימום 2 ק\"מ + 3×800מ' (4:45/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "ריצת התאוששות", surface: SURFACE.FREE, desc: "ריצת התאוששות קלה של 5 ק\"מ.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ קל" },
+  7: { type: "run", title: "ריצת נפח מופחתת", surface: SURFACE.OUTDOOR, desc: "ריצת נפח מופחתת של 7 ק\"מ קלים.", distanceKm: 7, paceTarget: null, structure: "7 ק\"מ קל" },
 };
 
 // --- שלב 3: סימולציות וקצב מטרה מדויק (שבועות 10-15) ---
 WEEKLY_RUN_CONTENT[10] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 1 ק\"מ בקצב המטרה (4:50–5:00 דק'/ק\"מ), עם 2.5 דקות מנוחה בין חזרות. סיים ב-1 ק\"מ שחרור.", distanceKm: 6, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 3×1 ק\"מ (4:50–5:00/ק\"מ, מנוחה 2.5 דק') + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ. ב-500 מטר האחרונים: 3 ספרינטים קלים (מתגברות) של 100 מטר.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח מורחב", surface: SURFACE.OUTDOOR, desc: "ריצה קלה בקצב נוח. 11 ק\"מ.", distanceKm: 11, paceTarget: null, structure: "11 ק\"מ קל, בניית נפח" },
+  2: { type: "run", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 1 ק\"מ בקצב המטרה (4:50–5:00 דק'/ק\"מ), עם 2.5 דקות מנוחה בין חזרות. סיים ב-1 ק\"מ שחרור.", distanceKm: 6, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 3×1 ק\"מ (4:50–5:00/ק\"מ, מנוחה 2.5 דק') + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ. ב-500 מטר האחרונים: 3 ספרינטים קלים (מתגברות) של 100 מטר.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
+  7: { type: "run", title: "ריצת נפח מורחב", surface: SURFACE.OUTDOOR, desc: "ריצה קלה בקצב נוח. 11 ק\"מ.", distanceKm: 11, paceTarget: null, structure: "11 ק\"מ קל, בניית נפח" },
 };
 WEEKLY_RUN_CONTENT[11] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 1 ק\"מ בקצב 4:50–5:00 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 6, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 3×1 ק\"מ (4:50–5:00/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ + 3 מתגברות של 100 מטר בסוף.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
-  7: { type: "run", icon: "🏃", title: "קצב מירוץ ממוקד", surface: SURFACE.OUTDOOR, desc: "6 ק\"מ ממוקדים בקצב של 5:05 דק'/ק\"מ.", distanceKm: 6, paceTarget: [5.083, 5.083], structure: "6 ק\"מ בקצב 5:05/ק\"מ" },
+  2: { type: "run", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 1 ק\"מ בקצב 4:50–5:00 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 6, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 3×1 ק\"מ (4:50–5:00/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ + 3 מתגברות של 100 מטר בסוף.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
+  7: { type: "run", title: "קצב מירוץ ממוקד", surface: SURFACE.OUTDOOR, desc: "6 ק\"מ ממוקדים בקצב של 5:05 דק'/ק\"מ.", distanceKm: 6, paceTarget: [5.083, 5.083], structure: "6 ק\"מ בקצב 5:05/ק\"מ" },
 };
 WEEKLY_RUN_CONTENT[12] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 1 ק\"מ בקצב 4:50–5:00 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 7, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 4×1 ק\"מ (4:50–5:00/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ + 3 מתגברות של 100 מטר בסוף.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
-  7: { type: "run", icon: "🏃", title: "ריצת נפח מורחב", surface: SURFACE.OUTDOOR, desc: "ריצה קלה בקצב נוח, 12 ק\"מ (בניית חוסן מעבר למרחק המירוץ).", distanceKm: 12, paceTarget: null, structure: "12 ק\"מ קל, בניית חוסן" },
+  2: { type: "run", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 1 ק\"מ בקצב 4:50–5:00 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 7, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 4×1 ק\"מ (4:50–5:00/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ + 3 מתגברות של 100 מטר בסוף.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
+  7: { type: "run", title: "ריצת נפח מורחב", surface: SURFACE.OUTDOOR, desc: "ריצה קלה בקצב נוח, 12 ק\"מ (בניית חוסן מעבר למרחק המירוץ).", distanceKm: 12, paceTarget: null, structure: "12 ק\"מ קל, בניית חוסן" },
 };
 WEEKLY_RUN_CONTENT[13] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 1 ק\"מ בקצב 4:50–5:00 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 7, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 4×1 ק\"מ (4:50–5:00/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ + 3 מתגברות של 100 מטר בסוף.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
-  7: { type: "run", icon: "🏃", title: "קצב מירוץ ממוקד", surface: SURFACE.OUTDOOR, desc: "7 ק\"מ ממוקדים בקצב קבוע של 5:05 דק'/ק\"מ.", distanceKm: 7, paceTarget: [5.083, 5.083], structure: "7 ק\"מ בקצב 5:05/ק\"מ" },
+  2: { type: "run", title: "אינטרוולים בקצב מטרה", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 1 ק\"מ בקצב 4:50–5:00 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 7, paceTarget: [4.833, 5.0], structure: "חימום 2 ק\"מ + 4×1 ק\"מ (4:50–5:00/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "קצב מוגבר + מתגברות", surface: SURFACE.FREE, desc: "6 ק\"מ בקצב 5:40 דק'/ק\"מ + 3 מתגברות של 100 מטר בסוף.", distanceKm: 6, paceTarget: [5.667, 5.667], structure: "6 ק\"מ (5:40/ק\"מ) + 3×100מ' מתגברות" },
+  7: { type: "run", title: "קצב מירוץ ממוקד", surface: SURFACE.OUTDOOR, desc: "7 ק\"מ ממוקדים בקצב קבוע של 5:05 דק'/ק\"מ.", distanceKm: 7, paceTarget: [5.083, 5.083], structure: "7 ק\"מ בקצב 5:05/ק\"מ" },
 };
 WEEKLY_RUN_CONTENT[14] = { // שבוע הכנה מנטלית ודילואד קצר לפני הטסט
-  2: { type: "run", icon: "🏃", title: "אינטרוולים קלים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 1 ק\"מ בקצב 4:50 דק'/ק\"מ. שחרור 1 ק\"מ.", distanceKm: 5, paceTarget: [4.833, 4.833], structure: "חימום 2 ק\"מ + 3×1 ק\"מ (4:50/ק\"מ) + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "ריצת התאוששות", surface: SURFACE.FREE, desc: "5 ק\"מ ריצת התאוששות קלה מאוד.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ קל מאוד" },
-  7: { type: "run", icon: "🏃", title: "ריצה קלה מאוד", surface: SURFACE.OUTDOOR, desc: "6 ק\"מ קלים מאוד (שמירת אנרגיה לשבוע הטסט).", distanceKm: 6, paceTarget: null, structure: "6 ק\"מ קל מאוד" },
+  2: { type: "run", title: "אינטרוולים קלים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 3 חזרות של 1 ק\"מ בקצב 4:50 דק'/ק\"מ. שחרור 1 ק\"מ.", distanceKm: 5, paceTarget: [4.833, 4.833], structure: "חימום 2 ק\"מ + 3×1 ק\"מ (4:50/ק\"מ) + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "ריצת התאוששות", surface: SURFACE.FREE, desc: "5 ק\"מ ריצת התאוששות קלה מאוד.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ קל מאוד" },
+  7: { type: "run", title: "ריצה קלה מאוד", surface: SURFACE.OUTDOOR, desc: "6 ק\"מ קלים מאוד (שמירת אנרגיה לשבוע הטסט).", distanceKm: 6, paceTarget: null, structure: "6 ק\"מ קל מאוד" },
 };
 // שבוע 15 - שבוע היעד המוקדם (סימולציית מירוץ)
 WEEKLY_RUN_CONTENT[15] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים קלים 4×400", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות קלות של 400 מטר (רק לפתוח ריאות). שחרור 1 ק\"מ.", distanceKm: 4.6, paceTarget: null, structure: "חימום 2 ק\"מ + 4×400מ' קל + שחרור 1 ק\"מ" },
-  6: { type: "rest", icon: "🔴", title: "מנוחה מוחלטת", desc: "מנוחה מוחלטת. במקום ריצה רגילה - אוגרים כוח לטסט." },
-  7: { type: "race", icon: "🏁", title: "טסט 10 ק\"מ בשטח!", surface: SURFACE.OUTDOOR, desc: "סימולציה מלאה: טסט 10 ק\"מ בשטח. מטרה: סגירת המרחק ב-49:59 דקות (קצב 5:00 דק'/ק\"מ).", distanceKm: 10, paceTarget: [5.0, 5.0], structure: "טסט - 10 ק\"מ, יעד 49:59" },
+  2: { type: "run", title: "אינטרוולים קלים 4×400", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות קלות של 400 מטר (רק לפתוח ריאות). שחרור 1 ק\"מ.", distanceKm: 4.6, paceTarget: null, structure: "חימום 2 ק\"מ + 4×400מ' קל + שחרור 1 ק\"מ" },
+  6: { type: "rest", title: "מנוחה מוחלטת", desc: "מנוחה מוחלטת. במקום ריצה רגילה - אוגרים כוח לטסט." },
+  7: { type: "race", title: "טסט 10 ק\"מ בשטח!", surface: SURFACE.OUTDOOR, desc: "סימולציה מלאה: טסט 10 ק\"מ בשטח. מטרה: סגירת המרחק ב-49:59 דקות (קצב 5:00 דק'/ק\"מ).", distanceKm: 10, paceTarget: [5.0, 5.0], structure: "טסט - 10 ק\"מ, יעד 49:59" },
 };
-const WEEK15_WED_OVERRIDE = { type: "legs", icon: "🦵", title: "אימון רגליים (עומס מופחת)", desc: "אימון רגליים בחדר כושר - עומס מופחת לקראת הטסט. חובה לחתוך את משקלי האימון ב-50%." };
+const WEEK15_WED_OVERRIDE = { type: "legs", title: "אימון רגליים (עומס מופחת)", desc: "אימון רגליים בחדר כושר - עומס מופחת לקראת הטסט. חובה לחתוך את משקלי האימון ב-50%." };
 
 // --- שלב 4: שימור כושר וטייפר ממושך (שבועות 16-21, ושבוע המירוץ בפועל) ---
 // שבועות 16-19: רוטינת שימור קבועה
 for (let w = 16; w <= 19; w++) {
   WEEKLY_RUN_CONTENT[w] = {
-    2: { type: "run", icon: "🏃", title: "אינטרוולים מתונים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 1 ק\"מ בקצב 4:55 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 7, paceTarget: [4.917, 4.917], structure: "חימום 2 ק\"מ + 4×1 ק\"מ (4:55/ק\"מ) + שחרור 1 ק\"מ" },
-    6: { type: "run", icon: "🏃", title: "ריצה קלה ונוחה", surface: SURFACE.FREE, desc: "5 ק\"מ ריצה קלה ונוחה.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ קל" },
-    7: { type: "run", icon: "🏃", title: "ריצה קלה", surface: SURFACE.OUTDOOR, desc: "8 ק\"מ ריצה קלה בקצב חופשי (לא ללחוץ על הגז).", distanceKm: 8, paceTarget: null, structure: "8 ק\"מ קל, קצב חופשי" },
+    2: { type: "run", title: "אינטרוולים מתונים", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות של 1 ק\"מ בקצב 4:55 דק'/ק\"מ (2.5 דק' מנוחה). שחרור 1 ק\"מ.", distanceKm: 7, paceTarget: [4.917, 4.917], structure: "חימום 2 ק\"מ + 4×1 ק\"מ (4:55/ק\"מ) + שחרור 1 ק\"מ" },
+    6: { type: "run", title: "ריצה קלה ונוחה", surface: SURFACE.FREE, desc: "5 ק\"מ ריצה קלה ונוחה.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ קל" },
+    7: { type: "run", title: "ריצה קלה", surface: SURFACE.OUTDOOR, desc: "8 ק\"מ ריצה קלה בקצב חופשי (לא ללחוץ על הגז).", distanceKm: 8, paceTarget: null, structure: "8 ק\"מ קל, קצב חופשי" },
   };
 }
 // שבוע 20 - תחילת טייפר אחרון
 WEEKLY_RUN_CONTENT[20] = {
-  2: { type: "run", icon: "🏃", title: "אינטרוולים קלים 4×400", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות קלות של 400 מטר. שחרור 1 ק\"מ.", distanceKm: 4.6, paceTarget: null, structure: "חימום 2 ק\"מ + 4×400מ' קל + שחרור 1 ק\"מ" },
-  6: { type: "run", icon: "🏃", title: "ריצה קלה מאוד", surface: SURFACE.FREE, desc: "4 ק\"מ ריצה קלה מאוד.", distanceKm: 4, paceTarget: null, structure: "4 ק\"מ קל מאוד" },
-  7: { type: "run", icon: "🏃", title: "ריצה נינוחה", surface: SURFACE.OUTDOOR, desc: "5 ק\"מ בקצב נינוח.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ נינוח" },
+  2: { type: "run", title: "אינטרוולים קלים 4×400", surface: SURFACE.TREADMILL, desc: "חימום 2 ק\"מ. לאחר מכן 4 חזרות קלות של 400 מטר. שחרור 1 ק\"מ.", distanceKm: 4.6, paceTarget: null, structure: "חימום 2 ק\"מ + 4×400מ' קל + שחרור 1 ק\"מ" },
+  6: { type: "run", title: "ריצה קלה מאוד", surface: SURFACE.FREE, desc: "4 ק\"מ ריצה קלה מאוד.", distanceKm: 4, paceTarget: null, structure: "4 ק\"מ קל מאוד" },
+  7: { type: "run", title: "ריצה נינוחה", surface: SURFACE.OUTDOOR, desc: "5 ק\"מ בקצב נינוח.", distanceKm: 5, paceTarget: null, structure: "5 ק\"מ נינוח" },
 };
-const WEEK20_WED_OVERRIDE = { type: "legs", icon: "🦵", title: "אימון רגליים (עומס מופחת)", desc: "אימון רגליים בחדר כושר - לחתוך את משקלי האימון ב-50% בהמשך הטייפר." };
+const WEEK20_WED_OVERRIDE = { type: "legs", title: "אימון רגליים (עומס מופחת)", desc: "אימון רגליים בחדר כושר - לחתוך את משקלי האימון ב-50% בהמשך הטייפר." };
 
 // שבוע המירוץ (השבוע האחרון בפועל, לפי תאריכים - מתחיל אחרי שבוע 20)
 const RACE_WEEK_CONTENT = {
-  1: { type: "rest", icon: "🪶", title: "מנוחה מלאה", desc: "מנוחה מלאה מריצה." },
-  3: { type: "run", icon: "🏃", title: "ריצת התעוררות קלילה", surface: SURFACE.OUTDOOR, desc: "3 ק\"מ בקצב קל מאוד, רק כדי להזרים דם. בשטח - כמו תנאי המירוץ.", distanceKm: 3, paceTarget: null, structure: "3 ק\"מ קלילה" },
-  5: { type: "rest", icon: "🔴", title: "מנוחה מוחלטת", desc: "מנוחה מוחלטת. אכילת פחמימות מורכבות ושתיית מים מרובה." },
+  1: { type: "rest", title: "מנוחה מלאה", desc: "מנוחה מלאה מריצה." },
+  3: { type: "run", title: "ריצת התעוררות קלילה", surface: SURFACE.OUTDOOR, desc: "3 ק\"מ בקצב קל מאוד, רק כדי להזרים דם. בשטח - כמו תנאי המירוץ.", distanceKm: 3, paceTarget: null, structure: "3 ק\"מ קלילה" },
+  5: { type: "rest", title: "מנוחה מוחלטת", desc: "מנוחה מוחלטת. אכילת פחמימות מורכבות ושתיית מים מרובה." },
 };
-const RACE_WEEK_WED_OVERRIDE = { type: "rest", icon: "🚫", title: "ללא אימון רגליים", desc: "שבוע המירוץ - אין אימון רגליים השבוע בכלל." };
-const RACE_DAY_CONTENT = { type: "race", icon: "🏁", title: "מירוץ חיפה! 🏁", surface: SURFACE.OUTDOOR, desc: "זינוק למירוץ חיפה 10 ק\"מ! הגוף החלים לחלוטין, הכושר כבר קיים בפנים - לקטוף את התוצאה.", distanceKm: 10, paceTarget: [5.0, 5.0], structure: "מירוץ - 10 ק\"מ, יעד 49:59" };
+const RACE_WEEK_WED_OVERRIDE = { type: "rest", title: "ללא אימון רגליים", desc: "שבוע המירוץ - אין אימון רגליים השבוע בכלל." };
+const RACE_DAY_CONTENT = { type: "race", title: "מירוץ חיפה!", surface: SURFACE.OUTDOOR, desc: "זינוק למירוץ חיפה 10 ק\"מ! הגוף החלים לחלוטין, הכושר כבר קיים בפנים - לקטוף את התוצאה.", distanceKm: 10, paceTarget: [5.0, 5.0], structure: "מירוץ - 10 ק\"מ, יעד 49:59" };
 
 // ============================================================
 // בניית תוכנית יום-יומית מלאה (day 0..TOTAL_PLAN_DAYS), לפי תאריכים בפועל
@@ -1117,7 +1117,7 @@ function getWorkoutForDay(day) {
       return { day, weekNum, dow: dowClamped, dowName: DOW_NAMES[dowClamped - 1], ...RACE_WEEK_CONTENT[dowClamped] };
     }
     // ימים שלא הוגדרו במפורש בשבוע המירוץ -> מנוחה/קלילות
-    return { day, weekNum, dow: dowClamped, dowName: DOW_NAMES[dowClamped - 1], type: "rest", icon: "🪶", title: "מנוחה / טייפר", desc: "שבוע המירוץ - הפחתת עומסים מלאה." };
+    return { day, weekNum, dow: dowClamped, dowName: DOW_NAMES[dowClamped - 1], type: "rest", title: "מנוחה / טייפר", desc: "שבוע המירוץ - הפחתת עומסים מלאה." };
   }
 
   // חריג: שבוע 15, יום רביעי (עומס רגליים מופחת)
@@ -1141,7 +1141,7 @@ function getWorkoutForDay(day) {
   }
 
   // ברירת מחדל (לא צריך להתרחש)
-  return { day, weekNum, dow: dowClamped, dowName: DOW_NAMES[dowClamped - 1], type: "rest", icon: "🔴", title: "מנוחה", desc: "אין אימון מוגדר ליום זה." };
+  return { day, weekNum, dow: dowClamped, dowName: DOW_NAMES[dowClamped - 1], type: "rest", title: "מנוחה", desc: "אין אימון מוגדר ליום זה." };
 }
 
 // בדיקה האם יום נתון הוא יום ריצה (משמש לקביעת היסטוריית "אימוני ריצה שלא הועלו")
@@ -1286,7 +1286,7 @@ function __simulateDate(dateInput) {
     return;
   }
   __simulatedNowOverride = d;
-  console.log(`📅 התאריך המדומה הוגדר ל-${d.toLocaleDateString("he-IL")}. רענון הדף (F5) יחזיר לתאריך האמיתי.`);
+  console.log(`התאריך המדומה הוגדר ל-${d.toLocaleDateString("he-IL")}. רענון הדף (F5) יחזיר לתאריך האמיתי.`);
   if (typeof renderAll === "function") {
     renderDayPill();
     renderAll();
@@ -1295,7 +1295,7 @@ function __simulateDate(dateInput) {
 
 function __clearSimulatedDate() {
   __simulatedNowOverride = null;
-  console.log("📅 התאריך המדומה אופס לתאריך האמיתי.");
+  console.log("התאריך המדומה אופס לתאריך האמיתי.");
   if (typeof renderAll === "function") {
     renderDayPill();
     renderAll();
