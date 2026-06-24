@@ -1,0 +1,3613 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מסע למירוץ חיפה | תוכנית 21 שבועות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #12161D;
+  --bg-raised: #1A2029;
+  --bg-card: #1E2530;
+  --line: #2A3340;
+  --chalk: #F2F0EA;
+  --chalk-dim: #9AA4B2;
+  --steel: #5B7083;
+  --mint: #4ADE9C;
+  --mint-dim: rgba(74,222,156,0.14);
+  --signal: #FF5A36;
+  --signal-dim: rgba(255,90,54,0.14);
+  --amber: #FFB454;
+  --amber-dim: rgba(255,180,84,0.14);
+  --violet: #9D8DF1;
+  --violet-dim: rgba(157,141,241,0.14);
+  --cyan: #4AC9DE;
+  --cyan-dim: rgba(74,201,222,0.14);
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Heebo', sans-serif;
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--chalk);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(74,222,156,0.06), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(255,90,54,0.05), transparent 40%);
+}
+.wrap{ max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== HEADER ===== */
+header.top{
+  padding: 36px 0 28px;
+  border-bottom: 1px solid var(--line);
+}
+.brand-row{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.brand{
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.brand .accent{ color: var(--mint); }
+.brand-sub{
+  font-size: 13px;
+  color: var(--chalk-dim);
+  font-family: var(--font-display);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.day-pill{
+  font-family: var(--font-display);
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 14px;
+  color: var(--chalk-dim);
+  white-space: nowrap;
+}
+.day-pill b{ color: var(--chalk); font-size:16px; }
+
+/* ===== SECTION TITLES ===== */
+.section-label{
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 10px;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.section-label::before{
+  content:'';
+  width: 18px; height: 1px;
+  background: var(--steel);
+}
+h2.section-title{
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+section{ padding: 48px 0; }
+section + section{ border-top: 1px solid var(--line); }
+
+/* ===== TODAY WORKOUT CARD (signature element) ===== */
+.today-card{
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0;
+  margin-top: 18px;
+  overflow: hidden;
+  position: relative;
+}
+.today-card .stripe{
+  height: 5px;
+  width: 100%;
+}
+.stripe.run{ background: var(--mint); }
+.stripe.strength{ background: var(--steel); }
+.stripe.rest{ background: var(--signal); }
+.stripe.legs{ background: var(--amber); }
+.today-card-inner{ padding: 26px 28px; }
+.today-top-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+.today-phase-tag{
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--violet);
+  background: var(--violet-dim);
+  padding: 5px 12px;
+  border-radius: 999px;
+  display:inline-block;
+  margin-bottom: 10px;
+}
+.today-title{ font-family: var(--font-display); font-size: 24px; font-weight:500; margin-bottom:4px; }
+.today-daylabel{ font-size: 13px; color: var(--chalk-dim); }
+.today-week-marker{
+  text-align:left;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--steel);
+  white-space:nowrap;
+}
+.workout-detail-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0;
+}
+.workout-detail{
+  background: var(--bg-raised);
+  border:1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.workout-detail .label{ font-size:11px; color:var(--steel); text-transform:uppercase; letter-spacing:1px; font-family:var(--font-display); margin-bottom:6px;}
+.workout-detail .value{ font-family: var(--font-display); font-size: 19px; font-weight:500; }
+
+/* ===== SURFACE TAG (הליכון / שטח / חופשי) ===== */
+.surface-tag{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.surface-tag.treadmill{ background: var(--cyan-dim); color: var(--cyan); }
+.surface-tag.outdoor{ background: var(--mint-dim); color: var(--mint); }
+.surface-tag.free{ background: var(--bg-raised); color: var(--chalk-dim); border:1px solid var(--line); }
+.surface-tag .sicon{ font-size:13px; }
+.surface-tag.small{ font-size:10.5px; padding:3px 9px; }
+
+.today-desc{ font-size: 14.5px; color: var(--chalk-dim); line-height:1.7; margin-top:14px; }
+
+/* ===== פירוק אימון אינטרוולים לסטים (חימום / סטים / שחרור) ===== */
+.interval-breakdown{ font-size: 14.5px; color: var(--chalk-dim); line-height: 1.7; }
+.interval-set{ margin-bottom: 10px; }
+.interval-set:last-child{ margin-bottom: 0; }
+.interval-set > b{ color: var(--chalk); font-weight: 600; }
+.interval-set-title{ color: var(--mint); font-weight: 600; font-family: var(--font-display); letter-spacing: 0.3px; margin-bottom: 2px; }
+.interval-step{ padding-right: 4px; }
+
+.today-actions{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
+
+/* ===== UPLOAD ZONE ===== */
+.upload-zone{
+  background: var(--bg-card);
+  border: 1.5px dashed var(--line);
+  border-radius: 16px;
+  padding: 40px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  position: relative;
+}
+.upload-zone:hover, .upload-zone.dragover{
+  border-color: var(--mint);
+  background: var(--mint-dim);
+}
+.upload-zone input{ display:none; }
+.upload-icon{
+  width: 52px; height: 52px;
+  margin: 0 auto 16px;
+  color: var(--mint);
+}
+.upload-title{ font-family: var(--font-display); font-size: 19px; margin-bottom: 6px; }
+.upload-hint{ font-size: 13px; color: var(--chalk-dim); }
+
+.file-queue{ margin-top:18px; display:flex; flex-direction:column; gap:10px; }
+.file-row{
+  display:flex; align-items:center; justify-content:space-between;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  gap: 12px;
+}
+.file-row .fname{ color:var(--chalk); font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.file-row .fmeta{ color:var(--chalk-dim); font-size:12.5px; white-space:nowrap; }
+.file-row .status{ font-size:12px; font-family: var(--font-display); letter-spacing:0.5px; white-space:nowrap; }
+.status.pending{ color: var(--chalk-dim); }
+.status.analyzing{ color: var(--amber); }
+.status.done{ color: var(--mint); }
+.status.error{ color: var(--signal); }
+
+button.primary{
+  font-family: var(--font-display);
+  background: var(--mint);
+  color: #0E1310;
+  border:none;
+  border-radius: 10px;
+  padding: 13px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor:pointer;
+  transition: transform .12s, box-shadow .12s;
+}
+button.primary:hover{ box-shadow: 0 6px 20px rgba(74,222,156,0.25); transform: translateY(-1px); }
+button.primary:disabled{ opacity:0.4; cursor:not-allowed; transform:none; box-shadow:none; }
+button.ghost{
+  font-family: var(--font-body);
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--chalk-dim);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  cursor:pointer;
+}
+button.ghost:hover{ border-color: var(--steel); color: var(--chalk); }
+button.ghost.small{ padding: 8px 14px; font-size:12.5px; }
+
+.upload-actions{ margin-top:16px; display:flex; gap:10px; justify-content:flex-end; }
+
+/* ===== STATUS BANNER ===== */
+.status-banner{
+  border-radius: 14px;
+  padding: 22px 26px;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  border: 1px solid var(--line);
+}
+.status-banner.on-pace{ background: var(--mint-dim); border-color: rgba(74,222,156,0.3); }
+.status-banner.behind{ background: var(--signal-dim); border-color: rgba(255,90,54,0.3); }
+.status-banner.warning{ background: var(--amber-dim); border-color: rgba(255,180,84,0.3); }
+.status-banner.neutral{ background: var(--bg-card); }
+.status-banner .badge{
+  font-family: var(--font-display);
+  font-size: 32px;
+  flex-shrink:0;
+  width:54px; height:54px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,0.06);
+}
+.status-banner h3{ font-family: var(--font-display); font-size:19px; margin-bottom:6px; font-weight:500;}
+.status-banner p{ font-size: 14px; color: var(--chalk-dim); }
+
+/* ===== MISSED WORKOUT BANNER ===== */
+.missed-banner{
+  border-radius: 14px;
+  padding: 18px 22px;
+  background: var(--amber-dim);
+  border: 1px solid rgba(255,180,84,0.35);
+  display:flex;
+  gap:16px;
+  align-items:center;
+  margin-bottom:16px;
+  flex-wrap:wrap;
+}
+.missed-banner .icon{ font-size:22px; flex-shrink:0; }
+.missed-banner .txt{ flex:1; min-width:200px; }
+.missed-banner .txt b{ color:var(--amber); }
+.missed-banner .txt p{ font-size:13.5px; color:var(--chalk-dim); margin-top:2px; }
+
+/* ===== STAT GRID ===== */
+.stat-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+.stat-card{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.stat-card .label{ font-size:11.5px; color:var(--steel); text-transform:uppercase; letter-spacing:1.2px; font-family:var(--font-display); margin-bottom:8px;}
+.stat-card .value{ font-family: var(--font-display); font-size: 28px; font-weight:500; }
+.stat-card .value .unit{ font-size:14px; color:var(--chalk-dim); font-family:var(--font-body); margin-right:4px;}
+.stat-card .delta{ font-size:12.5px; margin-top:4px; }
+.delta.pos{ color: var(--mint); }
+.delta.neg{ color: var(--signal); }
+.ladder-caption{ margin-top:14px; padding:13px 16px; background:var(--bg-raised); border-radius:10px; font-size:13.5px; color:var(--chalk-dim); line-height:1.55; }
+.ladder-caption.loading{ opacity:0.55; font-style:italic; }
+
+/* ===== UPCOMING WEEK STRIP ===== */
+.week-strip{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+.week-day-card{
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align:center;
+  position:relative;
+  transition: border-color .15s;
+}
+.week-day-card.is-today{ border-color: var(--mint); box-shadow: 0 0 0 1px var(--mint) inset; }
+.week-day-card .dname{ font-family: var(--font-display); font-size:12px; color:var(--chalk-dim); margin-bottom:8px; }
+.week-day-card .dicon{ font-size: 20px; margin-bottom:8px; }
+.week-day-card .dtype{ font-size: 11.5px; color: var(--chalk); line-height:1.4; min-height:30px; }
+.week-day-card .ddist{ font-family: var(--font-display); font-size: 13px; color: var(--mint); margin-top:6px; }
+.week-day-card .dsurface{ margin-top:6px; }
+.week-day-card.is-today::after{
+  content:'היום';
+  position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+  background: var(--mint); color:#0E1310; font-family:var(--font-display);
+  font-size:10px; padding:2px 8px; border-radius:999px; letter-spacing:0.5px;
+}
+
+/* ===== PHASE AHEAD (rest-of-phase preview) ===== */
+.phase-ahead-week{
+  margin-bottom: 18px;
+}
+.phase-ahead-week-label{
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  color: var(--steel);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-right: 2px;
+}
+.phase-ahead-row{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.phase-ahead-row.is-run{ border-right: 3px solid var(--mint); }
+.phase-ahead-row.is-gym{ opacity: 0.65; }
+.phase-ahead-row .pa-icon{ font-size:18px; flex-shrink:0; width:22px; text-align:center; }
+.phase-ahead-row .pa-day{ font-family: var(--font-display); font-size:12px; color:var(--chalk-dim); white-space:nowrap; min-width: 90px; }
+.phase-ahead-row .pa-title{ font-size:13.5px; flex:1; min-width:160px; }
+.phase-ahead-row .pa-meta{ font-family: var(--font-display); font-size:12.5px; color:var(--mint); white-space:nowrap; }
+.phase-ahead-row .pa-adjusted{ font-size:11px; color:var(--violet); white-space:nowrap; }
+.phase-ahead-empty{ text-align:center; padding:30px 16px; color:var(--chalk-dim); font-size:13.5px; background:var(--bg-card); border:1px solid var(--line); border-radius:12px; }
+
+/* ===== PHASE TIMELINE ===== */
+.phase-strip{
+  display:flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.phase-chip{
+  flex:1;
+  min-width: 150px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  position: relative;
+}
+.phase-chip.active{ border-color: var(--mint); background: var(--mint-dim); }
+.phase-chip .pnum{ font-family:var(--font-display); font-size:11px; color:var(--steel); letter-spacing:1px; }
+.phase-chip.active .pnum{ color: var(--mint); }
+.phase-chip .pname{ font-family: var(--font-display); font-size:14.5px; margin-top:4px; }
+.phase-chip .prange{ font-size:11.5px; color:var(--chalk-dim); margin-top:3px; }
+
+/* ===== PACE LADDER ===== */
+.ladder-wrap{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+.ladder-legend{
+  display:flex; gap:22px; flex-wrap:wrap; margin-bottom: 18px; font-size:12.5px; color:var(--chalk-dim);
+}
+.ladder-legend span{ display:flex; align-items:center; gap:7px; }
+.dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+/* ===== RUN TABLE ===== */
+.run-table{ width:100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+.run-table th{
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--steel);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.run-table td{
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.run-table tr:last-child td{ border-bottom: none; }
+.run-table tr.clickable{ cursor:pointer; transition: background .15s; }
+.run-table tr.clickable:hover{ background: var(--bg-raised); }
+.run-table tr.missed-row{ opacity:0.7; }
+.pace-tag{
+  display:inline-block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.pace-tag.good{ background: var(--mint-dim); color: var(--mint); }
+.pace-tag.bad{ background: var(--signal-dim); color: var(--signal); }
+.pace-tag.mid{ background: var(--amber-dim); color: var(--amber); }
+.pace-tag.missed{ background: var(--bg-raised); color: var(--chalk-dim); }
+.empty-state{ text-align:center; padding: 60px 20px; color: var(--chalk-dim); }
+.empty-state .big{ font-family: var(--font-display); font-size:18px; color:var(--chalk); margin-bottom:8px;}
+
+/* ===== ANALYSIS PANEL ===== */
+.analysis-panel{
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-right: 3px solid var(--mint);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+.analysis-panel.loading{ color: var(--chalk-dim); display:flex; align-items:center; gap:12px; }
+.spinner{
+  width:16px; height:16px;
+  border: 2px solid var(--line);
+  border-top-color: var(--mint);
+  border-radius:50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* ===== PLAN ADJUSTMENT PANEL ===== */
+.adjust-panel{
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-right: 3px solid var(--violet);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+.adjust-panel h4{ font-family:var(--font-display); font-size:15px; color:var(--violet); margin-bottom:10px; font-weight:500;}
+.adjust-list{ display:flex; flex-direction:column; gap:10px; margin-top:10px;}
+.adjust-item{
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.adjust-item .desc{ font-size:13.5px; flex:1; min-width:200px; }
+.adjust-item .desc b{ color: var(--violet); }
+
+/* ===== MODAL ===== */
+.modal-overlay{
+  position: fixed; inset:0;
+  background: rgba(10,12,16,0.7);
+  backdrop-filter: blur(3px);
+  display:flex; align-items:center; justify-content:center;
+  z-index: 100;
+  padding: 20px;
+}
+.modal-box{
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  max-width: 640px;
+  width:100%;
+  max-height: 85vh;
+  overflow-y:auto;
+  padding: 30px;
+}
+.modal-box h3{ font-family: var(--font-display); font-size: 22px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center;}
+.modal-close{ cursor:pointer; color: var(--chalk-dim); font-size:22px; line-height:1; background:none; border:none; }
+.modal-close:hover{ color: var(--chalk); }
+
+/* ===== DAY-SPECIFIC UPLOAD MODAL ===== */
+.day-upload-context{
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  color: var(--chalk-dim);
+  margin-bottom: 18px;
+}
+.day-upload-context b{ color: var(--chalk); }
+.day-upload-zone{
+  background: var(--bg-raised);
+  border: 1.5px dashed var(--line);
+  border-radius: 14px;
+  padding: 32px 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.day-upload-zone:hover, .day-upload-zone.dragover{
+  border-color: var(--mint);
+  background: var(--mint-dim);
+}
+.day-upload-zone input{ display:none; }
+.day-upload-status{ margin-top:14px; font-size:13.5px; color: var(--chalk-dim); display:flex; align-items:center; gap:10px; }
+.day-upload-status.error{ color: var(--signal); }
+.day-upload-status.success{ color: var(--mint); }
+.upload-for-day-btn{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--chalk-dim);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor:pointer;
+  white-space: nowrap;
+  transition: border-color .15s, color .15s;
+}
+.upload-for-day-btn:hover{ border-color: var(--mint); color: var(--mint); }
+
+.attach-hr-btn{
+  display:inline-flex; align-items:center; gap:5px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--chalk-dim);
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor:pointer;
+  white-space: nowrap;
+  transition: border-color .15s, color .15s;
+}
+.attach-hr-btn:hover{ border-color: var(--amber); color: var(--amber); }
+.attach-hr-btn:disabled{ opacity:0.6; cursor:default; }
+
+/* ===== CONFIG NOTICE ===== */
+.config-notice{
+  background: var(--amber-dim);
+  border: 1px solid rgba(255,180,84,0.3);
+  border-radius: 12px;
+  padding: 18px 22px;
+  font-size: 13.5px;
+  color: var(--chalk-dim);
+  margin-bottom: 24px;
+}
+.config-notice b{ color: var(--amber); }
+.config-notice code{
+  background: rgba(0,0,0,0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12.5px;
+}
+
+footer{
+  padding: 30px 0 50px;
+  text-align:center;
+  color: var(--steel);
+  font-size: 12.5px;
+}
+
+@media (max-width: 900px){
+  .week-strip{ grid-template-columns: repeat(4,1fr); }
+}
+@media (max-width: 720px){
+  .stat-grid{ grid-template-columns: repeat(2,1fr); }
+  .brand{ font-size:22px; }
+  section{ padding: 36px 0; }
+  .workout-detail-grid{ grid-template-columns: repeat(2,1fr); }
+  .week-strip{ grid-template-columns: repeat(4,1fr); }
+}
+/* ===== COACH BUTTON + CHAT PANEL ===== */
+.coach-btn{
+  display:flex; align-items:center; gap:8px;
+  background: var(--violet-dim);
+  border: 1px solid rgba(157,141,241,0.35);
+  color: var(--violet);
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+.coach-btn:hover{ background: rgba(157,141,241,0.22); }
+.coach-btn-icon{ font-size:15px; }
+
+.coach-overlay{
+  position: fixed; inset:0;
+  background: rgba(10,12,16,0.6);
+  z-index: 150;
+  display:flex; justify-content:flex-end;
+}
+.coach-panel{
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  background: var(--bg-raised);
+  border-left: 1px solid var(--line);
+  display:flex; flex-direction:column;
+  box-shadow: -20px 0 50px rgba(0,0,0,0.4);
+}
+.coach-header{
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.coach-header h3{ font-family: var(--font-display); font-size:18px; font-weight:500; color: var(--violet); }
+.coach-messages{
+  flex:1; overflow-y:auto;
+  padding: 18px 20px;
+  display:flex; flex-direction:column; gap:14px;
+}
+.coach-msg{
+  max-width: 88%;
+  padding: 11px 15px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.coach-msg.user{
+  align-self: flex-start;
+  background: var(--mint-dim);
+  color: var(--chalk);
+  border-bottom-right-radius: 4px;
+}
+.coach-msg.assistant{
+  align-self: flex-end;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--chalk);
+  border-bottom-left-radius: 4px;
+}
+.coach-msg.assistant.loading{ color: var(--chalk-dim); display:flex; align-items:center; gap:10px; }
+.coach-empty{ color: var(--chalk-dim); font-size: 13.5px; text-align:center; padding: 30px 10px; }
+.coach-input-row{
+  border-top: 1px solid var(--line);
+  padding: 14px 16px;
+  display:flex; gap:10px;
+}
+.coach-input-row input{
+  flex:1;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--chalk);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+}
+.coach-input-row input:focus{ border-color: var(--violet); }
+.coach-send-btn{
+  background: var(--violet);
+  color: var(--bg);
+  border:none;
+  border-radius: 10px;
+  padding: 0 18px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  cursor:pointer;
+}
+.coach-send-btn:disabled{ opacity:0.5; cursor:default; }
+
+/* ===== REPLAN BANNER ===== */
+.replan-banner{
+  display:flex; align-items:flex-start; gap:16px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 24px 0 0;
+  border: 1px solid;
+}
+.replan-banner.changed{ background: var(--violet-dim); border-color: rgba(157,141,241,0.35); }
+.replan-banner.ontrack{ background: var(--mint-dim); border-color: rgba(74,222,156,0.3); }
+.replan-banner .badge{ font-size:22px; line-height:1; flex-shrink:0; }
+.replan-banner h3{ font-family: var(--font-display); font-size:16.5px; margin-bottom:5px; font-weight:500; }
+.replan-banner.changed h3{ color: var(--violet); }
+.replan-banner.ontrack h3{ color: var(--mint); }
+.replan-banner p{ font-size: 13.5px; color: var(--chalk-dim); line-height:1.6; }
+.replan-banner .undo-btn{
+  margin-top:10px;
+  background: none;
+  border: 1px solid var(--violet);
+  color: var(--violet);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12.5px;
+  font-family: var(--font-display);
+  cursor: pointer;
+}
+.replan-banner .undo-btn:hover{ background: rgba(157,141,241,0.12); }
+
+</style> </head> <body>
+
+<header class="top">
+  <div class="wrap brand-row">
+    <div>
+      <div class="brand">תוכנית האימונים של <span class="accent">עמית מטיאס</span></div>
+      <div class="brand-sub">זמן: 21 שבועות · יעד: 10 ק״מ ב-50 דק׳ · מרוץ חיפה</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button id="coachBtn" class="coach-btn" type="button">
+        <span class="coach-btn-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span> דבר עם המאמן
+      </button>
+      <div class="day-pill">יום <b id="currentDayNum">–</b> מתוך <span id="totalDaysLabel"></span></div>
+    </div>
+  </div>
+</header>
+
+<div id="coachPanelRoot"></div>
+
+<main class="wrap">
+
+  <div id="configNotice" class="config-notice" style="display:none;"></div>
+  <div id="replanBannerWrap"></div>
+
+  <section id="todaySection">
+    <div class="section-label">האימון של היום</div>
+    <h2 class="section-title">מה צריך לעשות עכשיו</h2>
+    <div id="missedBannerWrap"></div>
+    <div id="todayCardWrap"></div>
+  </section>
+
+  <section id="statusSection">
+    <div class="section-label">סטטוס נוכחי</div>
+    <h2 class="section-title">איפה אתה עומד מול האימון האחרון</h2>
+    <div id="statusBannerWrap" style="margin-top:18px;"></div>
+    <div class="stat-grid" id="statGrid"></div>
+  </section>
+
+  <section id="weekAheadSection">
+    <div class="section-label">השבוע הזה</div>
+    <h2 class="section-title">מה נשאר בשבוע הנוכחי</h2>
+    <div class="week-strip" id="weekStrip"></div>
+
+    <div class="section-label" style="margin-top:40px;">המשך השלב</div>
+    <h2 class="section-title">מה צפוי בהמשך <span id="phaseAheadName"></span></h2>
+    <div id="phaseAheadWrap" style="margin-top:18px;"></div>
+  </section>
+
+  <section id="phaseSection">
+    <div class="section-label">מבנה התוכנית</div>
+    <h2 class="section-title">4 השלבים בדרך למירוץ</h2>
+    <div class="phase-strip" id="phaseStrip"></div>
+  </section>
+
+  <section id="ladderSection">
+    <div class="section-label">מסלול ההתקדמות</div>
+    <h2 class="section-title">סולם הקצב — מהיום הראשון ל-5:00</h2>
+    <div class="ladder-wrap" id="ladderWrap">
+      <div class="ladder-legend">
+        <span><span class="dot" style="background:var(--steel)"></span> קצב מטרה לתקופה</span>
+        <span><span class="dot" style="background:var(--mint)"></span> ריצה בקצב טוב</span>
+        <span><span class="dot" style="background:var(--signal)"></span> ריצה מאחורי הקצב</span>
+      </div>
+      <div id="ladderSvgContainer"></div>
+      <div id="ladderCaption" class="ladder-caption"></div>
+    </div>
+  </section>
+
+  <section id="logSection">
+    <div class="section-label">יומן ריצות</div>
+    <h2 class="section-title">כל הריצות שלך</h2>
+    <div id="logContainer"></div>
+  </section>
+
+</main>
+
+<footer>נבנה במיוחד לתוכנית שלך לקראת מירוץ חיפה · הנתונים נשמרים בפיירבייס הפרטי שלך</footer>
+
+<div id="modalRoot"></div>
+
+
+<script type="module">
+// ===== config.js =====
+// ============================================================
+// קובץ הגדרות — כאן ממלאים את הפרטים האישיים שלך
+// ============================================================
+
+// --- פרטי פרויקט Firebase שלך (מה-Firebase Console > הגדרות הפרויקט) ---
+const firebaseConfig = {
+  apiKey: "AIzaSyDlyDbpwcBcWvFnvYHb84dMEpaQFTjv-HY",
+  authDomain: "tester-69fa9.firebaseapp.com",
+  databaseURL: "https://tester-69fa9-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "tester-69fa9",
+  storageBucket: "tester-69fa9.firebasestorage.app",
+  messagingSenderId: "378563229004",
+  appId: "1:378563229004:web:5136b724eb84fd00e44be9",
+  measurementId: "G-BFJ1QQM3MS"
+};
+// --- מפתח Groq API שלך ---
+// שים לב: אם הדבקת כאן בעבר מפתח כלשהו שעלה בצ'אט או הגיע מ-AI אחר,
+// יש לראות אותו כחשוף ולבטל אותו ב-console.groq.com/keys, וליצור מפתח חדש.
+// הדבק את המפתח החדש שלך כאן במקום הטקסט הבא:
+const GROQ_API_KEY = "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";
+
+// --- שם ה-collection ב-Firestore ---
+const RUNS_COLLECTION = "runs";
+
+// --- collection התוכנית החיה — document אחד לכל יום (day_0, day_1, ...) ---
+// זה המקור האמת היחיד לכל פרטי האימון. ה-AI עורך ישירות כאן.
+const TRAINING_PLAN_COLLECTION = "trainingPlan";
+
+// --- שם collection לשמירת עדכונים חד-יומיים ידניים ---
+const MANUAL_DAY_OVERRIDES_COLLECTION = "manualDayOverrides";
+
+// --- שם collection לשמירת גרסאות תוכנית מתוקנת (replan) ---
+const PLAN_ADJUSTMENTS_COLLECTION = "planAdjustments";
+
+// --- מודל Groq שישמש לניתוח ---
+const GROQ_MODELS = ["llama-3.3-70b-versatile", "gemma2-9b-it", "llama-3.1-8b-instant"];
+let currentModelIndex = 0;
+let GROQ_MODEL = GROQ_MODELS[currentModelIndex];
+
+// עקיפה אוטומטית של fetch - משנה את המשתנה ומנסה שוב אם חזר 429
+const originalFetch = window.fetch || globalThis.fetch;
+globalThis.fetch = async function(url, options) {
+  try {
+    let response = await originalFetch(url, options);
+    if (response.status === 429 && url.includes('groq') && currentModelIndex < GROQ_MODELS.length - 1) {
+      currentModelIndex++;
+      GROQ_MODEL = GROQ_MODELS[currentModelIndex];
+      console.warn(`🔄 המכסה נגמרה (429). מודל הוחלף אוטומטית ל: ${GROQ_MODEL}`);
+      
+      // מעדכן את המודל החדש בתוך ה-Body של הבקשה ומנסה שוב
+      if (options && options.body) {
+        let bodyObj = JSON.parse(options.body);
+        bodyObj.model = GROQ_MODEL;
+        options.body = JSON.stringify(bodyObj);
+      }
+      return await originalFetch(url, options);
+    }
+    return response;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// ===== plan.js =====
+// ============================================================
+// מודל תוכנית האימונים - תוכנית ריצה לקראת מירוץ חיפה 10 ק"מ
+// מבוססת על תאריכים קלנדריים אמיתיים (לא ימים מתוחים). "21 שבועות" הוא
+// כינוי כללי לתוכנית - הספירה בפועל היא לפי תאריכים, מיום ההתחלה ועד יום המירוץ.
+// ============================================================
+
+const PLAN_START_DATE_ISO = "2026-06-21"; // יום ראשון - תחילת התוכנית
+const RACE_DATE_ISO = "2026-11-20";       // יום שישי - מירוץ חיפה
+
+// ============================================================
+// "new Date('2026-06-21')" מפרש את המחרוזת כחצות UTC, לא כחצות בזמן
+// המקומי של המשתמש. בישראל זה מזיז את "תחילת היום" בתוכנית ל-02:00-03:00
+// בבוקר (לפי שעון קיץ/חורף) במקום חצות - מה שגרם לאימונים שתועדו בשעות
+// הערב המאוחרות (או אחרי חצות, לפני 02:00-03:00) להיכנס ליום הלא נכון.
+// הפונקציה הזו מפרשת מחרוזת "YYYY-MM-DD" כחצות בזמן המקומי בפועל.
+// ============================================================
+function parseLocalDateOnly(isoDateStr) {
+  const [y, m, d] = isoDateStr.split("-").map(Number);
+  return new Date(y, m - 1, d); // קונסטרוקטור מקומי - לא UTC
+}
+
+// יעד סופי: מירוץ חיפה - 10 ק"מ בקצב 5:00 דק'/ק"מ (49:59)
+const FINAL_GOAL = {
+  distanceKm: 10,
+  paceMinPerKmBest: 5.0,
+  paceMinPerKmWorst: 5.25,
+  raceDateISO: RACE_DATE_ISO,
+};
+
+const DOW_NAMES = ["יום ראשון","יום שני","יום שלישי","יום רביעי","יום חמישי","יום שישי","יום שבת"];
+
+// ============================================================
+// סוגי משטח לאימוני ריצה - הליכון / שטח / חופשי (לבחירת המתאמן)
+// כל אימון ריצה מקבל בדיוק אחד מהשלושה, לפי ההיגיון המקצועי:
+// - אינטרוולים/טמפו (יום שני) -> הליכון: בקרת קצב מדויקת, ללא הפרעות.
+// - ריצת התאוששות (יום שישי) -> חופשי (עדיף הליכון/שטח שטוח), קצב איטי "נעול".
+// - ריצת נפח/קצב מירוץ (יום שבת) -> שטח: הסתגלות לאספלט, לזעזועים ולתנאי המירוץ.
+// ============================================================
+const SURFACE = {
+  TREADMILL: "treadmill", // הליכון
+  OUTDOOR: "outdoor",     // שטח
+  FREE: "free",           // בחירה חופשית (עדיף שטח שטוח/הליכון)
+};
+
+const SURFACE_META = {
+  [SURFACE.TREADMILL]: { label: "הליכון", className: "treadmill" },
+  [SURFACE.OUTDOOR]:   { label: "שטח",      className: "outdoor"   },
+  [SURFACE.FREE]:      { label: "בחירה חופשית (עדיף שטח שטוח/הליכון)", className: "free" },
+};
+
+function surfaceLabel(surfaceKey) {
+  return SURFACE_META[surfaceKey]?.label || "";
+}
+
+// סך ימי התוכנית (מיום 0 = יום ההתחלה, עד יום המירוץ)
+const TOTAL_PLAN_DAYS = Math.round(
+  (parseLocalDateOnly(RACE_DATE_ISO) - parseLocalDateOnly(PLAN_START_DATE_ISO)) / (1000 * 60 * 60 * 24)
+);
+
+// המרה: יום בתוכנית (0-based) -> תאריך
+function dayToDate(day) {
+  const d = parseLocalDateOnly(PLAN_START_DATE_ISO);
+  d.setDate(d.getDate() + day);
+  return d;
+}
+// המרה: יום בתוכנית -> מספר שבוע קלנדרי בתוכנית (שבוע 1 = 7 הימים הראשונים, וכו')
+function dayToWeekNum(day) {
+  return Math.max(1, Math.floor(day / 7) + 1);
+}
+function weekStartDay(weekNum) { return (weekNum - 1) * 7; }
+function weekEndDay(weekNum) { return weekNum * 7 - 1; }
+
+// ============================================================
+// 4 השלבים, כפי שמופיעים בתוכנית
+// טווחי השבועות לפי המסמך המקורי; weekStartDay/weekEndDay מחושבים מהם בפועל
+// ============================================================
+const PHASES = [
+  { num: 1, name: "בניית בסיס וריצה מקוטעת",      weeks: [1, 4],
+    note: "ארבעה השבועות הראשונים מוקדשים להרגלת המפרקים והרצועות לעומס הריצה, ולבניית 3 ימי ריצה קבועים בלו\"ז. בשלב זה העקביות חשובה יותר מהמהירות." },
+  { num: 2, name: "סף חומצת חלב ופיתוח מהירות",   weeks: [5, 9],
+    note: "השרירים כבר התרגלו לנפח. כאן מלמדים את הגוף להחזיק מהירות גבוהה יותר לאורך זמן, על ידי דחיפת הסף האנאירובי כלפי מעלה (אינטרוולים ארוכים יותר + טמפו)." },
+  { num: 3, name: "סימולציות וקצב מטרה מדויק",    weeks: [10, 15],
+    note: "הטמעת קצב המירוץ המדויק (כ-5:00 דק'/ק\"מ) במערכת העצבית, בניית נפח לקראת היעד, וסימולציית מירוץ מלאה (טסט 10 ק\"מ) בשבוע 15." },
+  { num: 4, name: "שימור כושר וטייפר ממושך",      weeks: [16, 21],
+    note: "לאחר הטסט, המטרה היא לא לשפר יותר כושר אלא לשמר אותו, לתת למפרקים להחלים, ולהגיע למירוץ האמיתי רענן - טייפר מבוקר עד יום הזינוק." },
+];
+// חישוב weekStartDay/weekEndDay בפועל לכל שלב (לפי תאריכים, לא לפי "21 שבועות" קשיח)
+PHASES.forEach((p) => { p.weekStartDay = weekStartDay(p.weeks[0]); p.weekEndDay = p.num === PHASES.length ? TOTAL_PLAN_DAYS : weekEndDay(p.weeks[1]); });
+
+// ============================================================
+// נקודות ציון מרכזיות בתוכנית
+// ============================================================
+const MILESTONES = [
+  { day: 0,                          label: "פתיחה (היום)",        paceTargetMinPerKm: null },
+  { day: weekEndDay(4),               label: "סוף שלב 1",            paceTargetMinPerKm: 5.917, note: "8 ק\"מ רצוף בנוח" },
+  { day: weekEndDay(9),               label: "סוף שלב 2",            paceTargetMinPerKm: 5.583, note: "10 ק\"מ ראשונים ברצף" },
+  { day: weekEndDay(15),              label: "טסט 10 ק\"מ",          paceTargetMinPerKm: 5.0,   note: "מטרת הטסט: 49:59" },
+  { day: TOTAL_PLAN_DAYS,             label: "מירוץ חיפה",           paceTargetMinPerKm: 5.0,   isGoal: true },
+];
+
+// ============================================================
+// TRAINING PLAN CACHE — נטען מ-Firestore בעלייה, ומשמש כמקור האמת היחיד
+// לכל פרטי האימון. מפת day -> workoutObject.
+// ============================================================
+let trainingPlanCache = {}; // { [day]: workoutObject }
+let planLoaded = false;
+
+// fallback גנרי ליום שלא נמצא בcache (לא אמור לקרות לאחר טעינה תקינה מ-Firestore)
+function genericFallbackWorkout(day) {
+  const weekNum = dayToWeekNum(day);
+  const wStart = weekStartDay(weekNum);
+  const dowClamped = (day - wStart) + 1;
+  return {
+    day, weekNum, dow: dowClamped, dowName: DOW_NAMES[dowClamped - 1] || "",
+    type: "rest", title: "אין אימון מוגדר", desc: "התוכנית לא נטענה עבור יום זה. בדוק את חיבור ה-Firestore.",
+  };
+}
+
+// getWorkoutForDay קורא מהcache בלבד - מקור האמת היחיד הוא Firestore
+function getWorkoutForDay(day) {
+  if (day < 0) day = 0;
+  if (day > TOTAL_PLAN_DAYS) day = TOTAL_PLAN_DAYS;
+  return trainingPlanCache[day] || genericFallbackWorkout(day);
+}
+
+// ============================================================
+// בניית תוכנית יום-יומית מלאה (day 0..TOTAL_PLAN_DAYS), לפי תאריכים בפועל
+// הערה: getWorkoutForDay מוגדרת למעלה (קוראת מה-cache).
+// ============================================================
+
+// בדיקה האם יום נתון הוא יום ריצה (משמש לקביעת היסטוריית "אימוני ריצה שלא הועלו")
+function isRunDay(day) {
+  const w = getWorkoutForDay(day);
+  return w.type === "run" || w.type === "race";
+}
+
+// המרת זמן "MM:SS" / שניות לק"מ למחרוזת קצב
+function formatPace(minPerKm) {
+  if (minPerKm == null || !isFinite(minPerKm)) return "—";
+  const totalSeconds = Math.round(minPerKm * 60);
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function formatPaceRange(range) {
+  if (!range) return "ללא יעד קצב מוגדר";
+  if (range[0] === range[1]) return `${formatPace(range[0])} דק'/ק"מ`;
+  return `${formatPace(range[0])}–${formatPace(range[1])} דק'/ק"מ`;
+}
+
+function formatDuration(totalMinutes) {
+  if (totalMinutes == null || !isFinite(totalMinutes)) return "—";
+  const totalSeconds = Math.round(totalMinutes * 60);
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+// ============================================================
+// פירוק structure של אימון אינטרוולים (חימום + N×מרחק (קצב, מנוחה) + שחרור)
+// מחזיר אובייקט מבנה גולמי { warmupKm, reps, repDistKm, paceLabel, restLabel, cooldownKm, totalWorkKm }
+// או null אם ה-structure אינו תואם לתבנית אינטרוולים.
+// זהו ה"מקור אמת" המספרי של התוכנית - משמש גם לתצוגה (HTML) וגם לבניית הפרומפט ל-AI,
+// כדי שה-AI ישווה נפח עבודה כולל ולא רק טקסט מול טקסט.
+// ============================================================
+function parseIntervalStructureData(structure) {
+  if (!structure) return null;
+  const m = structure.match(
+    /^חימום\s*([\d.]+)\s*ק"מ\s*\+\s*(\d+)\s*×\s*([\d.]+)\s*(מ'|ק"מ)\s*(?:\(([^)]*)\)|([א-ת]+))?\s*\+\s*שחרור\s*([\d.]+)\s*ק"מ$/
+  );
+  if (!m) return null;
+
+  const [, warmupKm, repsStr, repDist, repUnit, parenInfo, freeWord, cooldownKm] = m;
+  const reps = parseInt(repsStr, 10);
+  const repDistKm = repUnit === "מ'" ? parseFloat(repDist) / 1000 : parseFloat(repDist);
+
+  let pace = null;
+  let restLabel = null;
+  if (parenInfo) {
+    const parts = parenInfo.split(",").map((p) => p.trim());
+    pace = parts[0];
+    for (const p of parts.slice(1)) {
+      const rm = p.match(/(מנוחה|הליכה)\s*([\d.]+)\s*(ש'|דק')/);
+      if (rm) {
+        const [, , amt, runit] = rm;
+        const unitWord = runit === "ש'" ? "שניות" : "דקות";
+        restLabel = `הליכה של ${amt} ${unitWord}`;
+      }
+    }
+  }
+  const easyLabel = freeWord || null;
+  const repDistLabel = repUnit === "מ'" ? `${repDist} מטר` : `${repDist} ק"מ`;
+  const paceLabel = pace ? pace.replace(/\/ק"מ$/, "") : easyLabel ? easyLabel : null;
+
+  return {
+    warmupKm: parseFloat(warmupKm),
+    reps,
+    repDistKm: round(repDistKm, 3),
+    repDistLabel,
+    paceLabel, // למשל "4:40-4:50" או "קל" - מחרוזת כמו שהוגדרה בתוכנית
+    restLabel,
+    cooldownKm: parseFloat(cooldownKm),
+    totalWorkKm: round(reps * repDistKm, 3), // נפח העבודה הכולל (בלי חימום/שחרור) - "מקור האמת" להשוואת ביצוע חלופי
+  };
+}
+
+// ============================================================
+// פירוק structure של אימון אינטרוולים לתצוגה מפורקת לפי סטים: סט חימום / סט 2..N / סט שחרור.
+// מחזיר HTML מוכן, או null אם ה-structure אינו תואם לתבנית אינטרוולים
+// (למשל ריצה רציפה/טמפו/מנוחה) - ואז יש להמשיך להציג את workout.desc כרגיל.
+// ============================================================
+function parseIntervalStructure(structure) {
+  const d = parseIntervalStructureData(structure);
+  if (!d) return null;
+
+  const paceLabel = d.paceLabel ? `בקצב ${d.paceLabel.match(/^\d/) ? d.paceLabel + " דק'/ק\"מ" : d.paceLabel}` : "";
+
+  let html = `<div class="interval-breakdown">`;
+  html += `<div class="interval-set"><b>סט חימום:</b> ${d.warmupKm} ק"מ ריצה קלה</div>`;
+
+  for (let i = 1; i <= d.reps; i++) {
+    const setNum = i + 1; // סט 2 הוא החזרה הראשונה
+    html += `<div class="interval-set"><div class="interval-set-title">סט ${setNum}:</div>`;
+    html += `<div class="interval-step">1. ריצה של ${d.repDistLabel} ${paceLabel}</div>`;
+    if (d.restLabel && i < d.reps) {
+      html += `<div class="interval-step">2. ${d.restLabel}</div>`;
+    }
+    html += `</div>`;
+  }
+
+  html += `<div class="interval-set"><b>סט שחרור:</b> ${d.cooldownKm} ק"מ ריצה קלה</div>`;
+  html += `</div>`;
+  return html;
+}
+
+// תגית HTML למשטח האימון (הליכון / שטח / חופשי), עם מחלקת גודל אופציונלית
+function surfaceTagHtml(surfaceKey, sizeClass) {
+  const meta = SURFACE_META[surfaceKey];
+  if (!meta) return "";
+  return `<span class="surface-tag ${meta.className}${sizeClass ? " " + sizeClass : ""}">${meta.label}</span>`;
+}
+
+// אינטרפולציה לינארית של קצב המטרה הכללי הנדרש ביום נתון בתוכנית (0-TOTAL_PLAN_DAYS)
+// (משמש רק לסולם ההתקדמות הכללי - לא לניתוח האימון היומי הספציפי)
+function targetPaceForDay(day) {
+  const pts = MILESTONES;
+  if (day <= pts[0].day) return paceFromMilestone(pts[0]);
+  for (let i = 0; i < pts.length - 1; i++) {
+    const a = pts[i], b = pts[i+1];
+    if (day >= a.day && day <= b.day) {
+      const pa = paceFromMilestone(a);
+      const pb = paceFromMilestone(b);
+      if (pa == null) return pb;
+      if (pb == null) return pa;
+      const t = (day - a.day) / (b.day - a.day);
+      return pa + (pb - pa) * t;
+    }
+  }
+  return paceFromMilestone(pts[pts.length - 1]);
+}
+
+function paceFromMilestone(m) {
+  if (m.paceTargetMinPerKm) return m.paceTargetMinPerKm;
+  if (m.target5kMin) return m.target5kMin / 5;
+  return null;
+}
+
+// תאריך התחלת התוכנית - קבוע לפי PLAN_START_DATE_ISO (21.6.2026), לא לפי
+// היום שבו המשתמש פתח את האפליקציה לראשונה.
+function getStartDate() {
+  return parseLocalDateOnly(PLAN_START_DATE_ISO);
+}
+
+// ============================================================
+// תאריך מדומה - כלי דיבוג/בדיקה לקונסולה.
+// window.__simulateDate("2026-08-15") "מזיז" את השעון לאותו תאריך,
+// ומכאן והלאה כל חישובי "היום" בתוכנית מתייחסים לתאריך הזה כאילו הוא עכשיו.
+// המצב הזה נשמר רק בזיכרון של הדף (לא ב-localStorage/sessionStorage) -
+// כל רענון (F5) מאפס אותו אוטומטית בחזרה לתאריך האמיתי.
+// ============================================================
+let __simulatedNowOverride = null; // Date | null
+
+function getNow() {
+  return __simulatedNowOverride ? new Date(__simulatedNowOverride) : new Date();
+}
+
+function __simulateDate(dateInput) {
+  const d = new Date(dateInput);
+  if (isNaN(d.getTime())) {
+    console.error('תאריך לא תקין. השתמש בפורמט כמו: __simulateDate("2026-08-15")');
+    return;
+  }
+  __simulatedNowOverride = d;
+  console.log(`התאריך המדומה הוגדר ל-${d.toLocaleDateString("he-IL")}. רענון הדף (F5) יחזיר לתאריך האמיתי.`);
+  if (typeof renderAll === "function") {
+    renderDayPill();
+    renderAll();
+  }
+}
+
+function __clearSimulatedDate() {
+  __simulatedNowOverride = null;
+  console.log("התאריך המדומה אופס לתאריך האמיתי.");
+  if (typeof renderAll === "function") {
+    renderDayPill();
+    renderAll();
+  }
+}
+// חשיפה לקונסולה
+window.__simulateDate = __simulateDate;
+window.__clearSimulatedDate = __clearSimulatedDate;
+
+function getCurrentPlanDay() {
+  const start = getStartDate();
+  const diffMs = getNow().getTime() - start.getTime();
+  const day = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  return Math.max(0, Math.min(TOTAL_PLAN_DAYS, day));
+}
+
+function dateForPlanDay(day) {
+  return dayToDate(day);
+}
+
+// ============================================================
+// שם יום בשבוע האמיתי (קלנדרי) של יום תוכנית נתון - לפי התאריך בפועל
+// (ולא לפי ה"דאו" הפנימי המשמש לבחירת תוכן האימון, שמתאפס בתחילת כל
+// "שבוע תוכנית" ולכן עלול לסטות מהיום הקלנדרי האמיתי בשבועות מתוחים
+// ל-8 ימים - ר' WEEK_SCALE למעלה). לתצוגה תמיד נשתמש בפונקציה הזו,
+// כדי שהיום והתאריך המוצגים למשתמש תמיד יתאימו זה לזה.
+// ============================================================
+function getRealDowName(day) {
+  const dateObj = dateForPlanDay(day);
+  if (!dateObj) return null;
+  return DOW_NAMES[dateObj.getDay()]; // getDay(): 0=ראשון...6=שבת, תואם בדיוק למבנה DOW_NAMES
+}
+
+// ============================================================
+// תוכניות מתוקנות (Replans) - גרסאות מלאות שנוצרות ע"י ה-AI כשהוא קובע
+// שאת לא בקצב למטרה. כל גרסה היא "שכבה" שמכילה override לימים העתידיים
+// (מהיום הבא עד יום המירוץ). הגרסה האחרונה (replanVersions[last]) היא
+// הפעילה. "חזרה אחורה" = מסיר את הגרסה האחרונה וחוזר לגרסה הקודמת (או
+// לתוכנית המקורית אם אין גרסאות נוספות).
+// מבנה גרסה: { id, createdAt, reason, summary, fromDay, overrides: {day: {...patch}} }
+// ============================================================
+let replanVersions = []; // נטען מ-Firestore, מסודר מהישן לחדש
+
+// מפת עדכונים ידניים חד-יומיים: { [day]: {...patch, id} } - נטענת מ-Firestore.
+// בשונה מ-replanVersions (שמשנים את כל הימים העתידיים), עדכון ידני חל רק על
+// היום הספציפי שבו הוחלף האימון בפועל, ולא מתפשט לשבועות אחרים.
+let manualDayOverrides = {};
+
+function getActiveReplan() {
+  return replanVersions.length ? replanVersions[replanVersions.length - 1] : null;
+}
+
+function getPreviousReplan() {
+  return replanVersions.length >= 2 ? replanVersions[replanVersions.length - 2] : null;
+}
+
+// מחזיר workout אפקטיבי ליום נתון - לאחר הטמעת ה-override של הגרסה הפעילה (אם יש, ואם הוא חל על היום הזה),
+// ולאחריו (בעדיפות גבוהה יותר) עדכון ידני חד-יומי אם קיים ליום הזה - כי הוא משקף את מה שבאמת קרה.
+function getEffectiveWorkoutForDay(day) {
+  const base = getWorkoutForDay(day);
+  const active = getActiveReplan();
+  let effective = { ...base, adjusted: false };
+  if (active && active.overrides && active.overrides[day]) {
+    const patch = active.overrides[day];
+    const mergedSurface = patch.surface || base.surface;
+    effective = { ...base, ...patch, surface: mergedSurface, adjusted: true, adjustmentReasons: [patch.reason || active.reason || "התאמת AI"] };
+  }
+  const manual = manualDayOverrides[day];
+  if (manual) {
+    const mergedSurface = manual.surface || effective.surface;
+    effective = { ...effective, ...manual, surface: mergedSurface, manuallyReplaced: true };
+  }
+  return effective;
+}
+
+
+// ===== gpxParser.js =====
+// ============================================================
+// פענוח קבצי GPX (Garmin / Strava)
+// ============================================================
+
+const NS_GPXTPX = "http://www.garmin.com/xmlschemas/TrackPointExtension/v1";
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+/**
+ * מפענח טקסט GPX גולמי ומחזיר אובייקט עם כל המדדים הרלוונטיים
+ */
+function parseGPX(xmlText, fileName) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xmlText, "application/xml");
+
+  const errorNode = doc.querySelector("parsererror");
+  if (errorNode) {
+    throw new Error("קובץ GPX לא תקין או פגום");
+  }
+
+  const trkpts = Array.from(doc.getElementsByTagName("trkpt"));
+  if (trkpts.length === 0) {
+    throw new Error("לא נמצאו נקודות מסלול (trkpt) בקובץ");
+  }
+
+  const points = [];
+  for (const pt of trkpts) {
+    const lat = parseFloat(pt.getAttribute("lat"));
+    const lon = parseFloat(pt.getAttribute("lon"));
+    const timeEl = pt.getElementsByTagName("time")[0];
+    const eleEl = pt.getElementsByTagName("ele")[0];
+    const time = timeEl ? new Date(timeEl.textContent) : null;
+    const ele = eleEl ? parseFloat(eleEl.textContent) : null;
+
+    // heart rate + cadence may live in Garmin TrackPointExtension
+    let hr = null, cadence = null;
+    const hrEl = pt.getElementsByTagNameNS(NS_GPXTPX, "hr")[0] || findByLocalName(pt, "hr");
+    const cadEl = pt.getElementsByTagNameNS(NS_GPXTPX, "cad")[0] || findByLocalName(pt, "cad");
+    if (hrEl) hr = parseFloat(hrEl.textContent);
+    if (cadEl) cadence = parseFloat(cadEl.textContent);
+
+    points.push({ lat, lon, time, ele, hr, cadence });
+  }
+
+  // distance + duration + pace series
+  let totalDistanceKm = 0;
+  let totalElevGainM = 0;
+  let totalElevLossM = 0;
+  const splits = []; // per-km splits
+  let splitStartIdx = 0;
+  let splitDistance = 0;
+  const hrValues = [];
+  const cadenceValues = [];
+
+  for (let i = 1; i < points.length; i++) {
+    const p0 = points[i - 1];
+    const p1 = points[i];
+    const segKm = haversineKm(p0.lat, p0.lon, p1.lat, p1.lon);
+    totalDistanceKm += segKm;
+    splitDistance += segKm;
+
+    if (p0.ele != null && p1.ele != null) {
+      const delta = p1.ele - p0.ele;
+      if (delta > 0) totalElevGainM += delta;
+      else totalElevLossM += Math.abs(delta);
+    }
+    if (p1.hr) hrValues.push(p1.hr);
+    if (p1.cadence) cadenceValues.push(p1.cadence);
+
+    if (splitDistance >= 1.0) {
+      const t0 = points[splitStartIdx].time;
+      const t1 = p1.time;
+      const durationMin = t0 && t1 ? (t1 - t0) / 60000 : null;
+      splits.push({
+        km: splits.length + 1,
+        durationMin,
+        paceMinPerKm: durationMin != null ? durationMin / splitDistance : null,
+      });
+      splitStartIdx = i;
+      splitDistance = 0;
+    }
+  }
+
+  const firstTime = points.find((p) => p.time)?.time || null;
+  const lastTime = [...points].reverse().find((p) => p.time)?.time || null;
+  const totalDurationMin = firstTime && lastTime ? (lastTime - firstTime) / 60000 : null;
+  const avgPaceMinPerKm =
+    totalDurationMin != null && totalDistanceKm > 0
+      ? totalDurationMin / totalDistanceKm
+      : null;
+
+  const avgHr = hrValues.length
+    ? hrValues.reduce((a, b) => a + b, 0) / hrValues.length
+    : null;
+  const maxHr = hrValues.length ? Math.max(...hrValues) : null;
+  const avgCadence = cadenceValues.length
+    ? cadenceValues.reduce((a, b) => a + b, 0) / cadenceValues.length
+    : null;
+
+  // name from GPX metadata if present
+  const nameEl = doc.getElementsByTagName("name")[0];
+  const gpxName = nameEl ? nameEl.textContent : null;
+
+  // ===== זיהוי אינטרוולים מנקודות GPS גולמיות =====
+  // מחשב קצב על חלונות של 30 שניות, ואז מזהה מעברים בין "מהיר" ל"איטי"
+  // כדי לזהות חזרות ומנוחות גם בלי laps מפורשים בקובץ
+  const intervalSegments = detectIntervalSegments(points);
+
+  return {
+    fileName,
+    gpxName,
+    date: firstTime ? firstTime.toISOString() : new Date().toISOString(),
+    distanceKm: round(totalDistanceKm, 3),
+    durationMin: totalDurationMin != null ? round(totalDurationMin, 2) : null,
+    avgPaceMinPerKm: avgPaceMinPerKm != null ? round(avgPaceMinPerKm, 3) : null,
+    elevGainM: round(totalElevGainM, 1),
+    elevLossM: round(totalElevLossM, 1),
+    avgHr: avgHr != null ? round(avgHr, 1) : null,
+    maxHr,
+    avgCadence: avgCadence != null ? round(avgCadence * 2, 1) : null,
+    splits,
+    intervalSegments,
+    pointCount: points.length,
+  };
+}
+
+/**
+ * מזהה סגמנטים של אינטרוולים (חזרות + מנוחות) מתוך נקודות GPS גולמיות.
+ * משתמש בחלון הזזה של 30 שניות לחישוב קצב מיידי, ואז מזהה
+ * מעברים בין מהיר (עבודה) לאיטי (מנוחה) לפי סף של 15%.
+ * מחזיר מערך של סגמנטים: { type: "work"|"rest"|"warmup"|"cooldown", startMin, endMin, durationMin, distanceKm, paceMinPerKm, avgHr }
+ */
+function detectIntervalSegments(points) {
+  if (!points || points.length < 10) return [];
+  const timedPoints = points.filter(p => p.time);
+  if (timedPoints.length < 10) return [];
+
+  // שלב 1: חשב קצב מיידי על חלונות של 30 שניות
+  const WINDOW_SEC = 30;
+  const paceSeries = []; // { timeSec, paceMinPerKm, hr }
+  const t0 = timedPoints[0].time.getTime();
+
+  for (let i = 0; i < timedPoints.length; i++) {
+    const tSec = (timedPoints[i].time.getTime() - t0) / 1000;
+    // מצא נקודה ~30 שניות קדימה
+    let j = i + 1;
+    while (j < timedPoints.length && (timedPoints[j].time.getTime() - timedPoints[i].time.getTime()) / 1000 < WINDOW_SEC) j++;
+    if (j >= timedPoints.length) break;
+    const dt = (timedPoints[j].time.getTime() - timedPoints[i].time.getTime()) / 1000 / 60; // דקות
+    let dist = 0;
+    for (let k = i + 1; k <= j; k++) dist += haversineKm(timedPoints[k-1].lat, timedPoints[k-1].lon, timedPoints[k].lat, timedPoints[k].lon);
+    if (dist < 0.005) continue; // עמידה/עצירה — דלג
+    paceSeries.push({ timeSec: tSec, paceMinPerKm: dt / dist, hr: timedPoints[i].hr });
+  }
+
+  if (paceSeries.length < 5) return [];
+
+  // שלב 2: חשב קצב חציוני לקביעת סף עבודה/מנוחה
+  const paces = paceSeries.map(p => p.paceMinPerKm).sort((a, b) => a - b);
+  const medianPace = paces[Math.floor(paces.length / 2)];
+  // אם אין שונות גדולה — לא ריצת אינטרוולים, החזר ריק
+  const fastPace = paces[Math.floor(paces.length * 0.2)]; // פרצנטיל 20 = מהיר
+  const slowPace = paces[Math.floor(paces.length * 0.8)]; // פרצנטיל 80 = איטי
+  if (slowPace / fastPace < 1.12) return []; // פחות מ-12% שונות = ריצה רציפה
+
+  const THRESHOLD = medianPace * 0.92; // מהיר מהחציון ב-8% = "עבודה"
+
+  // שלב 3: קבץ נקודות רצופות לאותו מצב (עבודה/מנוחה)
+  const rawSegments = [];
+  let curType = paceSeries[0].paceMinPerKm <= THRESHOLD ? "work" : "rest";
+  let segStart = 0;
+
+  for (let i = 1; i < paceSeries.length; i++) {
+    const newType = paceSeries[i].paceMinPerKm <= THRESHOLD ? "work" : "rest";
+    if (newType !== curType) {
+      rawSegments.push({ type: curType, fromIdx: segStart, toIdx: i - 1 });
+      curType = newType;
+      segStart = i;
+    }
+  }
+  rawSegments.push({ type: curType, fromIdx: segStart, toIdx: paceSeries.length - 1 });
+
+  // שלב 4: מזג סגמנטים קצרים מדי (פחות מ-45 שניות) לשכן שלהם
+  const MIN_SEG_SEC = 45;
+  const merged = [];
+  for (const seg of rawSegments) {
+    const durSec = paceSeries[seg.toIdx].timeSec - paceSeries[seg.fromIdx].timeSec;
+    if (durSec < MIN_SEG_SEC && merged.length > 0) {
+      merged[merged.length - 1].toIdx = seg.toIdx;
+    } else {
+      merged.push({ ...seg });
+    }
+  }
+
+  // שלב 5: זהה חימום ושחרור — הסגמנטים הראשונים/אחרונים שהם "rest" ארוכים (>90 שניות)
+  const totalDurSec = paceSeries[paceSeries.length - 1].timeSec;
+  const result = [];
+  for (let i = 0; i < merged.length; i++) {
+    const seg = merged[i];
+    const durSec = paceSeries[seg.toIdx].timeSec - paceSeries[seg.fromIdx].timeSec;
+    const startMin = paceSeries[seg.fromIdx].timeSec / 60;
+    const endMin = paceSeries[seg.toIdx].timeSec / 60;
+    const avgPace = paceSeries.slice(seg.fromIdx, seg.toIdx + 1)
+      .reduce((s, p) => s + p.paceMinPerKm, 0) / (seg.toIdx - seg.fromIdx + 1);
+    const avgHrSeg = paceSeries.slice(seg.fromIdx, seg.toIdx + 1)
+      .filter(p => p.hr).reduce((s, p, _, a) => s + p.hr / a.length, 0) || null;
+    const distKm = (endMin - startMin) / avgPace;
+
+    let type = seg.type;
+    // החזרות הראשונות והאחרונות ה"איטיות" = חימום/שחרור
+    if (type === "rest") {
+      const isFirst = result.length === 0 || result.every(r => r.type !== "work");
+      const isLast = i === merged.length - 1 || merged.slice(i + 1).every(s => s.type !== "work");
+      if (isFirst) type = "warmup";
+      else if (isLast) type = "cooldown";
+    }
+
+    result.push({
+      type,
+      index: type === "work" ? result.filter(r => r.type === "work").length + 1 : null,
+      startMin: round(startMin, 1),
+      endMin: round(endMin, 1),
+      durationSec: Math.round(durSec),
+      distanceKm: round(distKm, 3),
+      paceMinPerKm: round(avgPace, 3),
+      avgHr: avgHrSeg ? Math.round(avgHrSeg) : null,
+    });
+  }
+
+  return result;
+}
+
+function findByLocalName(parent, localName) {
+  const all = parent.getElementsByTagName("*");
+  for (const el of all) {
+    if (el.localName === localName) return el;
+  }
+  return null;
+}
+
+function round(n, decimals) {
+  if (n == null || !isFinite(n)) return null;
+  const f = 10 ** decimals;
+  return Math.round(n * f) / f;
+}
+
+// ===== firestore.js =====
+// ============================================================
+// אינטגרציה עם Firestore לשמירת ריצות, היסטוריה והתאמות תוכנית
+// ============================================================
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    setDoc,
+    query,
+    orderBy,
+    doc,
+    updateDoc,
+    deleteDoc,
+    writeBatch,
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+let db = null;
+let initError = null;
+
+try {
+  const app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+} catch (e) {
+  initError = e;
+  console.error("Firebase init failed:", e);
+}
+
+function isFirebaseReady() {
+  return db !== null;
+}
+
+function getInitError() {
+  return initError;
+}
+
+/**
+ * שומר ריצה חדשה ב-Firestore ומחזיר את ה-id שנוצר
+ */
+async function saveRun(runData) {
+  if (!db) throw new Error("Firestore לא מאותחל - בדוק את config.js");
+  const ref = await addDoc(collection(db, RUNS_COLLECTION), {
+    ...runData,
+    createdAt: new Date().toISOString(),
+  });
+  return ref.id;
+}
+
+/**
+ * מעדכן ריצה קיימת (לדוגמה: הוספת ניתוח AI לאחר השמירה)
+ */
+async function updateRun(runId, patch) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  await updateDoc(doc(db, RUNS_COLLECTION, runId), patch);
+}
+
+/**
+ * מוחק ריצה
+ */
+async function deleteRun(runId) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  await deleteDoc(doc(db, RUNS_COLLECTION, runId));
+}
+
+/**
+ * שולף את כל הריצות, מסודרות מהישנה לחדשה לפי תאריך הריצה
+ */
+async function fetchAllRuns() {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const q = query(collection(db, RUNS_COLLECTION), orderBy("date", "asc"));
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+/**
+ * שומר גרסת תוכנית מתוקנת חדשה (Replan) ב-Firestore, ומחזיר את ה-id שנוצר
+ */
+async function saveReplanVersion(replan) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const ref = await addDoc(collection(db, PLAN_ADJUSTMENTS_COLLECTION), {
+    ...replan,
+    createdAt: new Date().toISOString(),
+  });
+  return ref.id;
+}
+
+/**
+ * מוחק גרסת תוכנית מתוקנת (משמש ל"חזרה אחורה")
+ */
+async function deleteReplanVersion(replanId) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  await deleteDoc(doc(db, PLAN_ADJUSTMENTS_COLLECTION, replanId));
+}
+
+/**
+ * שולף את כל גרסאות התוכנית המתוקנת, מסודרות מהישנה לחדשה
+ */
+async function fetchAllReplanVersions() {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const q = query(collection(db, PLAN_ADJUSTMENTS_COLLECTION), orderBy("createdAt", "asc"));
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+/**
+ * שומר עדכון ידני חד-יומי (יום ספציפי שהוחלף ע"י המתאמן) ב-Firestore.
+ * patch = { day, type, icon, title, desc, distanceKm, paceTarget, structure, surface, reason }
+ */
+async function saveManualDayOverride(patch) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const ref = await addDoc(collection(db, MANUAL_DAY_OVERRIDES_COLLECTION), {
+    ...patch,
+    createdAt: new Date().toISOString(),
+  });
+  return ref.id;
+}
+
+/**
+ * שולף את כל העדכונים הידניים החד-יומיים שנשמרו
+ */
+async function fetchAllManualDayOverrides() {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const snap = await getDocs(collection(db, MANUAL_DAY_OVERRIDES_COLLECTION));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+/**
+ * מוחק עדכון ידני חד-יומי (במקרה הצורך)
+ */
+async function deleteManualDayOverride(overrideId) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  await deleteDoc(doc(db, MANUAL_DAY_OVERRIDES_COLLECTION, overrideId));
+}
+
+/**
+ * שולף את כל ימי התוכנית מה-Firestore (collection trainingPlan, document לכל יום: day_0, day_1, ...).
+ * מחזיר מפה { [day]: workoutObject }. אם ה-collection ריק, מחזיר מפה ריקה.
+ */
+async function fetchFullTrainingPlan() {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const snap = await getDocs(collection(db, TRAINING_PLAN_COLLECTION));
+  const plan = {};
+  snap.forEach((docSnap) => {
+    const data = docSnap.data();
+    if (data && data.day != null) plan[data.day] = data;
+  });
+  return plan;
+}
+
+/**
+ * כותב את כל התוכנית (אובייקט {[day]: workoutObject}) ל-Firestore,
+ * document אחד לכל יום (day_0, day_1, ...) ב-collection trainingPlan.
+ * משתמש ב-writeBatch כדי לכתוב את כל הימים בפעולה אחת.
+ */
+async function seedFullTrainingPlan(plan) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const batch = writeBatch(db);
+  for (const dayKey of Object.keys(plan)) {
+    const docRef = doc(db, TRAINING_PLAN_COLLECTION, `day_${dayKey}`);
+    batch.set(docRef, plan[dayKey]);
+  }
+  await batch.commit();
+}
+
+/**
+ * מעדכן יום בודד בתוכנית החיה ב-Firestore (document day_X), ומעדכן גם את ה-cache המקומי.
+ * זה הפונקציה שה-AI/קוד אמורים לקרוא לה כשמשנים אימון של יום ספציפי בתוכנית.
+ */
+async function updateWorkoutForDay(day, patch) {
+  if (!db) throw new Error("Firestore לא מאותחל");
+  const docRef = doc(db, TRAINING_PLAN_COLLECTION, `day_${day}`);
+  const merged = { ...(trainingPlanCache[day] || genericFallbackWorkout(day)), ...patch, day };
+  await setDoc(docRef, merged, { merge: true });
+  trainingPlanCache[day] = merged;
+  return merged;
+}
+
+/**
+ * טוען את התוכנית מ-Firestore לתוך trainingPlanCache.
+ * התוכנית כבר נשמרה ב-Firestore (seed חד-פעמי בוצע בעבר) - הקוד הקבוע הוסר מהקובץ הזה,
+ * ולכן מקור האמת היחיד עכשיו הוא ה-collection trainingPlan ב-Firestore.
+ * אם ה-collection ריק (למשל פרויקט Firebase אחר, או מחיקה בטעות) - יוצג אזהרה,
+ * וכל הימים יקבלו fallback גנרי (genericFallbackWorkout) עד שהתוכנית תיובא מחדש.
+ */
+async function loadOrSeedTrainingPlan() {
+  if (!db) {
+    console.warn("Firestore לא מאותחל - לא ניתן לטעון את התוכנית.");
+    planLoaded = false;
+    return;
+  }
+  try {
+    const existing = await fetchFullTrainingPlan();
+    if (Object.keys(existing).length > 0) {
+      trainingPlanCache = existing;
+      planLoaded = true;
+      console.log(`נטענה תוכנית קיימת מ-Firestore: ${Object.keys(existing).length} ימים.`);
+      return;
+    }
+    console.warn("collection trainingPlan ריק ב-Firestore! התוכנית הקבועה הוסרה מהקוד, אז אין מקור גיבוי - יש לייבא את התוכנית מחדש ל-Firestore.");
+    trainingPlanCache = {};
+    planLoaded = false;
+  } catch (e) {
+    console.error("נכשלה טעינת התוכנית מ-Firestore:", e);
+    planLoaded = false;
+  }
+}
+
+
+// ===== groqAnalysis.js =====
+// ============================================================
+// אינטגרציה עם Groq API:
+// 1) analyzeRun       - ניתוח קצר של ריצה ספציפית מול האימון שתוכנן לה
+// 2) evaluateGoalFeasibility - בדיקה האם בקצב הנוכחי תושג המטרה הסופית
+//    (10 ק"מ עד 49:59 ביום המירוץ), ואם לא - תוכנית מתוקנת לכל הימים
+//    הנותרים (JSON מבני), שתוחל אוטומטית.
+// 3) chatWithCoach    - שיחה חופשית עם ה-AI על התוכנית (כפתור "דבר עם המאמן")
+// ============================================================
+
+function summarizeRemainingSchedule(fromDay, toDay) {
+  // תקציר קומפקטי של כל ימי הריצה המתוכננים מהיום הנתון ועד סוף התוכנית,
+  // כדי שה-AI יראה את כל מה שנשאר ויוכל להציע תוכנית מתוקנת עבורם.
+  const lines = [];
+  for (let d = fromDay; d <= toDay; d++) {
+    const w = getEffectiveWorkoutForDay(d);
+    if (w.type !== "run" && w.type !== "race") continue;
+    const dateObj = dayToDate(d);
+    const dateLabel = dateObj.toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit" });
+    const distText = w.distanceKm ? `${w.distanceKm} ק"מ` : "ללא מרחק מוגדר";
+    const paceText = w.paceTarget ? formatPaceRange(w.paceTarget) : "ללא יעד קצב";
+    const surfaceText = w.surface ? surfaceLabel(w.surface) : "ללא משטח מוגדר";
+    lines.push(`יום ${d} (${dateLabel}, ${w.dowName}): "${w.title}" - ${distText}, יעד קצב ${paceText}, משטח: ${surfaceText}${w.isRaceDay ? " [יום המירוץ עצמו]" : ""}`);
+  }
+  return lines.join("\n");
+}
+
+// תוויות עבריות לסוגי סגמנט שזוהו מ-GPS גולמי (ראה detectIntervalSegments)
+const SEGMENT_TYPE_LABEL = { warmup: "חימום", work: "חזרה (עבודה)", rest: "מנוחה/הליכה", cooldown: "שחרור" };
+
+// ============================================================
+// מעצב את הסגמנטים שזוהו בפועל מנקודות ה-GPS (חימום/עבודה/מנוחה/שחרור)
+// לטקסט קריא ל-AI, כדי שהניתוח יתבסס על מה שבאמת קרה בריצה
+// ולא רק על קצב ממוצע אחד או על ספליטים גולמיים לפי ק"מ.
+// ============================================================
+function formatDetectedSegments(intervalSegments) {
+  if (!intervalSegments || intervalSegments.length === 0) return null;
+  const lines = intervalSegments.map((s) => {
+    const label = SEGMENT_TYPE_LABEL[s.type] || s.type;
+    const idxTxt = s.type === "work" && s.index ? ` #${s.index}` : "";
+    const durTxt = `${Math.round(s.durationSec)} שנ'`;
+    const distTxt = `${s.distanceKm} ק"מ`;
+    const paceTxt = formatPace(s.paceMinPerKm);
+    const hrTxt = s.avgHr ? `, דופק ${s.avgHr}` : "";
+    return `  ${label}${idxTxt}: ${distTxt}, ${durTxt}, קצב ${paceTxt} דק'/ק"מ${hrTxt}`;
+  });
+  return lines.join("\n");
+}
+
+// ============================================================
+// "סיכום אפקטיבי" של ריצה: אם זוהו סגמנטי עבודה אמיתיים (אינטרוולים) מתוך ה-GPS,
+// מחשב את קצב העבודה האמיתי (ממוצע סגמנטי "work" בלבד, לא כולל חימום/מנוחה/שחרור)
+// וכן את קצב החימום/שחרור בנפרד. אם אין סגמנטים מזוהים (ריצה רציפה) - מחזיר
+// את הקצב הממוצע הכולל כרגיל.
+// המטרה: גם בדיקת המגמה/היעד הכוללת (evaluateGoalFeasibility) צריכה "לדעת" שריצת
+// אינטרוולים בוצעה כאינטרוולים, ולא להשוות את קצב המנוחה/החימום שלה כאילו היתה ריצה רציפה.
+// ============================================================
+function getEffortSummary(run) {
+  const segs = run.intervalSegments;
+  if (!segs || segs.length === 0) {
+    return {
+      isIntervalRun: false,
+      workPaceMinPerKm: run.avgPaceMinPerKm,
+      workReps: null,
+      warmupPaceMinPerKm: null,
+      cooldownPaceMinPerKm: null,
+      totalWorkKm: null,
+    };
+  }
+  const workSegs = segs.filter((s) => s.type === "work");
+  if (workSegs.length === 0) {
+    return {
+      isIntervalRun: false,
+      workPaceMinPerKm: run.avgPaceMinPerKm,
+      workReps: null,
+      warmupPaceMinPerKm: null,
+      cooldownPaceMinPerKm: null,
+      totalWorkKm: null,
+    };
+  }
+  const warmupSeg = segs.find((s) => s.type === "warmup");
+  const cooldownSeg = segs.find((s) => s.type === "cooldown");
+  const totalWorkKm = workSegs.reduce((sum, s) => sum + s.distanceKm, 0);
+  const totalWorkMin = workSegs.reduce((sum, s) => sum + s.distanceKm * s.paceMinPerKm, 0);
+  return {
+    isIntervalRun: true,
+    workPaceMinPerKm: totalWorkMin / totalWorkKm, // קצב העבודה האמיתי - "מקור האמת" למאמץ בפועל
+    workReps: workSegs.length,
+    warmupPaceMinPerKm: warmupSeg ? warmupSeg.paceMinPerKm : null,
+    cooldownPaceMinPerKm: cooldownSeg ? cooldownSeg.paceMinPerKm : null,
+    totalWorkKm: round(totalWorkKm, 3),
+  };
+}
+
+function buildPrompt(newRun, planDay, allRuns) {
+  const workout = getEffectiveWorkoutForDay(planDay ?? 0);
+  const phase = PHASES.find((p) => planDay >= p.weekStartDay && planDay <= p.weekEndDay) || PHASES[0];
+
+  const historyLines = allRuns
+    .slice(-15)
+    .map((r) => {
+      const d = new Date(r.date).toLocaleDateString("he-IL");
+      const w = getEffectiveWorkoutForDay(r.planDay ?? 0);
+      const targetTxt = w.paceTarget ? formatPaceRange(w.paceTarget) : "ללא יעד";
+      const splitsText = (r.splits || []).map((s, i) => `ק"מ ${s.km}: ${formatPace(s.paceMinPerKm)}`).join(", ");
+      return `- ${d} (יום ${r.planDay}): תוכנן "${w.title}" (${w.distanceKm ?? "?"}ק"מ, יעד ${targetTxt}) | בפועל: ${r.distanceKm}ק"מ קצב ${formatPace(r.avgPaceMinPerKm)} דק'/ק"מ${splitsText ? ` | ספליטים: ${splitsText}` : ""}${r.avgHr ? ` | דופק ממוצע: ${r.avgHr}` : ""}`;
+    })
+    .join("\n");
+
+  const planTargetText = workout.distanceKm
+    ? `${workout.distanceKm} ק"מ${workout.structure ? ` (${workout.structure})` : ""}, יעד קצב: ${formatPaceRange(workout.paceTarget)}, משטח מתוכנן: ${workout.surface ? surfaceLabel(workout.surface) : "לא מוגדר"}`
+    : "אין יעד מרחק/קצב מוגדר לאימון זה";
+
+  const daysToRace = TOTAL_PLAN_DAYS - (planDay ?? 0);
+
+  // בניית ניתוח splits מפורט — כל ק"מ בנפרד, מול היעד הספציפי של הסגמנט
+  let splitsAnalysis = "";
+  if (newRun.splits && newRun.splits.length > 0) {
+    const splitsDetail = newRun.splits.map((s) => {
+      const paceStr = s.paceMinPerKm != null ? formatPace(s.paceMinPerKm) : "—";
+      let vs = "";
+      if (workout.paceTarget && s.paceMinPerKm != null) {
+        const [pMin, pMax] = workout.paceTarget;
+        if (s.paceMinPerKm <= pMax + 0.05) vs = " [ביעד]";
+        else if (s.paceMinPerKm <= pMax + 0.25) vs = " [קצת מתחת]";
+        else vs = " [מתחת ליעד]";
+      }
+      return `  ק"מ ${s.km}: ${paceStr} דק'/ק"מ${vs}`;
+    }).join("\n");
+    splitsAnalysis = `\nספליטים לפי ק"מ (כל ק"מ בנפרד):\n${splitsDetail}`;
+  }
+
+  // זיהוי מבנה האימון המתוכנן — חימום / חזרות / שחרור, כנתון מספרי מפורק (לא רק טקסט)
+  const planStructure = parseIntervalStructureData(workout.structure);
+  let plannedStructureAnalysis = "";
+  if (workout.structure) {
+    plannedStructureAnalysis = `\nמבנה האימון המתוכנן (טקסט): ${workout.structure}`;
+    if (planStructure) {
+      plannedStructureAnalysis += `\nמבנה מפורק לנתונים: חימום ${planStructure.warmupKm} ק"מ קל + ${planStructure.reps} × ${planStructure.repDistLabel} (יעד קצב לחזרה: ${planStructure.paceLabel || "קל, ללא יעד מוגדר"}${planStructure.restLabel ? `, ${planStructure.restLabel} בין חזרות` : ""}) + שחרור ${planStructure.cooldownKm} ק"מ קל.`;
+      plannedStructureAnalysis += `\nנפח עבודה כולל מתוכנן (סכום מרחק החזרות בלבד, בלי חימום/שחרור): ${planStructure.totalWorkKm} ק"מ.`;
+    }
+  }
+
+  // הסגמנטים שזוהו בפועל מתוך נקודות ה-GPS הגולמיות (לא טקסט, לא ספליט קבוע לפי ק"מ -
+  // אלא זיהוי אמיתי של איפה הרץ האיץ/האט, כולל חימום/חזרות/מנוחות/שחרור עם קצב ומשך בפועל)
+  const detectedSegmentsText = formatDetectedSegments(newRun.intervalSegments);
+  const effort = getEffortSummary(newRun);
+  let detectedSegmentsAnalysis = "";
+  if (detectedSegmentsText) {
+    detectedSegmentsAnalysis = `\nסגמנטים שזוהו בפועל מנתוני ה-GPS הגולמיים (זה המידע האמיתי על מה שקרה בריצה - חימום, כל חזרה בנפרד, כל מנוחה בנפרד, ושחרור - עם הקצב והמשך הממשי של כל חלק):\n${detectedSegmentsText}`;
+    if (effort.isIntervalRun) {
+      detectedSegmentsAnalysis += `\n\nסיכום מאמץ אמיתי שמבוסס על הסגמנטים האלה (לא על הקצב הממוצע הכולל, שמוטה כלפי מטה ע"י החימום/המנוחות/השחרור):`;
+      detectedSegmentsAnalysis += `\n- בוצעו בפועל ${effort.workReps} חזרות עבודה, בנפח כולל של ${effort.totalWorkKm} ק"מ, בקצב עבודה ממוצע ${formatPace(effort.workPaceMinPerKm)} דק'/ק"מ.`;
+      if (effort.warmupPaceMinPerKm) detectedSegmentsAnalysis += `\n- קצב החימום בפועל: ${formatPace(effort.warmupPaceMinPerKm)} דק'/ק"מ.`;
+      if (effort.cooldownPaceMinPerKm) detectedSegmentsAnalysis += `\n- קצב השחרור בפועל: ${formatPace(effort.cooldownPaceMinPerKm)} דק'/ק"מ.`;
+    }
+  }
+
+  return `אתה מאמן ריצה מקצועי שמלווה רץ בתוכנית אימונים לקראת מירוץ חיפה, שמטרתה הסופית היא לסיים מירוץ של ${FINAL_GOAL.distanceKm} ק"מ בקצב של ${formatPace(FINAL_GOAL.paceMinPerKmBest)}-${formatPace(FINAL_GOAL.paceMinPerKmWorst)} דק'/ק"מ (49:59 דקות) ביום המירוץ (${dayToDate(TOTAL_PLAN_DAYS).toLocaleDateString("he-IL")}).
+
+זהו יום ${planDay ?? "לא ידוע"} בתוכנית (${daysToRace} ימים לפני המירוץ), בשבוע ${workout.weekNum ?? "?"}, בשלב "${phase.name}" (${phase.note}).
+
+האימון שתוכנן ליום הזה: "${workout.title}"
+תיאור: ${workout.desc}
+יעד מתוכנן: ${planTargetText}${plannedStructureAnalysis}
+
+הריצה בפועל (כל המדדים):
+- מרחק: ${newRun.distanceKm} ק"מ
+- משך: ${formatDuration(newRun.durationMin)}
+- קצב ממוצע לכל הריצה (כולל חימום/מנוחות/שחרור אם היו): ${formatPace(newRun.avgPaceMinPerKm)} דק'/ק"מ
+${newRun.avgHr ? `- דופק ממוצע: ${Math.round(newRun.avgHr)}, מקסימלי: ${newRun.maxHr}` : ""}
+${newRun.avgCadence ? `- קצב צעדים ממוצע: ${Math.round(newRun.avgCadence)} צעדים/דקה` : ""}
+- עלייה מצטברת: ${newRun.elevGainM} מ', ירידה: ${newRun.elevLossM} מ'
+- מספר נקודות GPS: ${newRun.pointCount || "לא ידוע"}
+${splitsAnalysis}
+${detectedSegmentsAnalysis}
+
+היסטוריית הריצות האחרונות (כולל ספליטים, מהישנה לחדשה):
+${historyLines || "אין ריצות קודמות עדיין"}
+
+הנחיות קריטיות לניתוח (קרא בעיון לפני שאתה כותב):
+1. אם יש סגמנטים שזוהו בפועל מה-GPS (לעיל) - הניתוח שלך חייב להתבסס עליהם, לא על הקצב הממוצע הכולל. הקצב הממוצע הכולל של ריצת אינטרוולים תמיד "איטי" יחסית ליעד החזרות, כי הוא ממוצע עם החימום, המנוחות והשחרור - זה תקין ולא פגם. לעולם אל תגיד "לא עמדת ביעד" רק כי הקצב הממוצע הכולל איטי מיעד החזרות.
+2. שפוט את החימום ואת השחרור לפי הקצב שזוהה בפועל בסגמנט שלהם בלבד (warmupPaceMinPerKm / cooldownPaceMinPerKm לעיל), ולא לפי הממוצע הכללי. אם זוהה חימום בפועל בקצב איטי מהחזרות - זה אומר שכן בוצע חימום, אל תכתוב שלא בוצע חימום.
+3. אם מספר החזרות ו/או המרחק לחזרה בפועל שונה מהמתוכנן (למשל בוצעו 5 חזרות של 800 מ' במקום 10 חזרות של 400 מ') - זה לא בהכרח "לא עקבת אחרי התוכנית". השווה את נפח העבודה הכולל (totalWorkKm בפועל מול נפח העבודה המתוכנן): אם הנפח הכולל קרוב (בטווח של כ-±15%) ולפחות חצי מהחזרות בוצעו בקצב סביר ליעד - זו התאמה לגיטימית של מבנה האימון (למשל כי המרחק המקורי הורגש קל מדי או קשה מדי), ויש לציין זאת בחיוב כהחלטה נבונה של הרץ, לא כסטייה מהתוכנית. רק אם נפח העבודה הכולל נמוך משמעותית מהמתוכנן (למשל פחות מ-70%), או שהקצב בחזרות היה איטי משמעותית מהיעד - יש לציין זאת כפער אמיתי.
+4. אם אין סגמנטים שזוהו בפועל (כלומר זו לא נראית כריצת אינטרוולים מה-GPS, או שזו ריצה רציפה לפי התוכנית) - נתח לפי הספליטים לכל ק"מ והממוצע הכללי כרגיל.
+5. היה ספציפי על כל חלק בנפרד: חימום, כל חזרה (או קבוצת חזרות), כל מנוחה, שחרור. אל תסתפק במשפט כללי על הריצה כולה.
+
+אנא תן ניתוח מעמיק ומפורט בעברית, בפורמט הבא בדיוק (כותרות מודגשות עם **), ללא הקדמות:
+
+**ניתוח מפורט לפי סגמנטים**
+[התייחס לכל חלק בנפרד לפי הסגמנטים שזוהו בפועל (אם יש) או לפי הספליטים לכל ק"מ (אם אין סגמנטים): מה קרה בחימום בפועל? כל חזרה בנפרד - הגיעה ליעד הקצב? מה קרה במנוחות? איך היה השחרור? אם בוצע מבנה שונה מהמתוכנן (מס' חזרות/מרחק לחזרה) - ציין זאת ונתח אם זו התאמה סבירה לפי נפח העבודה הכולל]
+
+**מה עבד ומה לא**
+[הצבע בדיוק על הסגמנטים/חזרות שהיו חזקים וכאלה שלא עמדו ביעד, על בסיס הקצב האמיתי שזוהה לכל סגמנט - לא על בסיס הממוצע הכללי. היה ספציפי: "חזרה 3 הייתה איטית מהיעד ב-15 שניות", "החימום בוצע בקצב קל ומתאים", וכדומה]
+
+**הערכה כוללת**
+[האם הביצוע עמד ביעד הספציפי של האימון הזה (לפי קצב העבודה האמיתי בחזרות ונפח העבודה הכולל, לא לפי הממוצע הכולל)? "עמד ביעד" / "חלקי" / "מתחת ליעד" + הסבר קצר ומה כדאי לשים לב אליו באימון הבא מהסוג הזה]
+
+חשוב: היה ישיר ותכל'סי כמו מאמן אמיתי. אל תסתפק בממוצע הכללי — התייחס לכל חלק של האימון. אל תכתוב על התאמות לתוכנית הכוללת — זה נבדק בנפרד.`;
+}
+
+/**
+ * קריאה גנרית ל-Groq Chat Completions, עם ניסיון חזרה אוטומטי במקרה של עומס (429/503)
+ */
+async function callGroq(messages, { temperature = 0.4, max_tokens = 900, json = false } = {}) {
+  if (!GROQ_API_KEY || GROQ_API_KEY.startsWith("REPLACE_")) {
+    throw new Error(
+      "לא הוגדר מפתח Groq API. פתח את app.html וחפש REPLACE_WITH_YOUR_NEW_GROQ_KEY כדי להדביק את המפתח שלך."
+    );
+  }
+  const url = "https://api.groq.com/openai/v1/chat/completions";
+  const body = JSON.stringify({
+    model: GROQ_MODEL,
+    messages,
+    temperature,
+    max_tokens,
+    ...(json ? { response_format: { type: "json_object" } } : {}),
+  });
+
+  const maxAttempts = 3;
+  let lastErrBody = "";
+  let lastStatus = null;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${GROQ_API_KEY}` },
+      body,
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      const text = data?.choices?.[0]?.message?.content ?? "";
+      if (!text) throw new Error("Groq החזיר תשובה ריקה");
+      return text.trim();
+    }
+
+    lastStatus = res.status;
+    lastErrBody = await res.text().catch(() => "");
+
+    if ((res.status === 429 || res.status === 503) && attempt < maxAttempts) {
+      const retryAfterHeader = res.headers.get("retry-after");
+      const waitSeconds = retryAfterHeader ? parseFloat(retryAfterHeader) : attempt * 5;
+      await new Promise((r) => setTimeout(r, waitSeconds * 1000));
+      continue;
+    }
+    break;
+  }
+
+  if (lastStatus === 429) {
+    const isQuotaExceeded = /quota|rate_limit_exceeded/i.test(lastErrBody);
+    if (isQuotaExceeded) {
+      throw new Error(
+        "נגמרה המכסה החינמית של Groq (429). בדוק את המצב ב-console.groq.com (Settings > Limits)."
+      );
+    }
+    throw new Error("יותר מדי בקשות ל-Groq בזמן קצר (429). נסה שוב בעוד דקה.");
+  }
+  throw new Error(`שגיאה מ-Groq API (${lastStatus}): ${lastErrBody.slice(0, 200)}`);
+}
+
+/**
+ * ניתוח ריצה ספציפית מול האימון שתוכנן לה (טקסט בעברית, להצגה ביומן הריצות)
+ */
+async function analyzeRun(newRun, planDay, allRuns) {
+  const prompt = buildPrompt(newRun, planDay, allRuns);
+  return callGroq([
+    { role: "system", content: "אתה מאמן ריצה מקצועי, ישיר ותכל'סי, שעונה בעברית בלבד." },
+    { role: "user", content: prompt },
+  ]);
+}
+
+/**
+ * הבדיקה המרכזית: האם בקצב הנוכחי הרץ יגיע למטרה (10 ק"מ עד 49:59) ביום המירוץ?
+ * אם לא - ה-AI בונה תוכנית מתוקנת לכל הימים הנותרים (מהיום הבא ועד יום המירוץ).
+ * מחזיר: { onTrack: boolean, summary: string, overrides: {day: {...}} } או null אם נכשל הפענוח.
+ */
+async function evaluateGoalFeasibility(planDay, allRuns) {
+  const fromDay = Math.min(planDay + 1, TOTAL_PLAN_DAYS);
+  const scheduleText = summarizeRemainingSchedule(fromDay, TOTAL_PLAN_DAYS);
+
+  const historyLines = allRuns
+    .slice(-20)
+    .map((r) => {
+      const d = new Date(r.date).toLocaleDateString("he-IL");
+      const w = getEffectiveWorkoutForDay(r.planDay ?? 0);
+      const targetTxt = w.paceTarget ? formatPaceRange(w.paceTarget) : "ללא יעד";
+      const effort = getEffortSummary(r);
+      // לריצות אינטרוולים - מציגים את קצב העבודה האמיתי (לא את הממוצע הכולל שמוטה ע"י חימום/מנוחות/שחרור),
+      // כדי שהערכת המגמה/היעד הכוללת לא "תפחיד" מקצב ממוצע איטי שבעצם תקין לריצת אינטרוולים.
+      const actualTxt = effort.isIntervalRun
+        ? `אינטרוולים: ${effort.workReps} חזרות, נפח עבודה ${effort.totalWorkKm} ק"מ, קצב עבודה ${formatPace(effort.workPaceMinPerKm)} דק'/ק"מ (קצב ממוצע כולל לכל הריצה: ${formatPace(r.avgPaceMinPerKm)} דק'/ק"מ - לא רלוונטי להערכת המאמץ כי כולל חימום/מנוחות/שחרור)`
+        : `${r.distanceKm} ק"מ בקצב ${formatPace(r.avgPaceMinPerKm)} דק'/ק"מ`;
+      return `- יום ${r.planDay} (${d}): תוכנן "${w.title}" (${w.distanceKm ?? "?"} ק"מ, יעד ${targetTxt}) | בפועל: ${actualTxt}`;
+    })
+    .join("\n");
+
+  const daysToRace = TOTAL_PLAN_DAYS - planDay;
+
+  const prompt = `אתה מאמן ריצה מקצועי. הרץ שאתה מלווה נמצא בתוכנית אימונים לקראת מירוץ חיפה.
+
+יעד סופי: ${FINAL_GOAL.distanceKm} ק"מ עד 49:59 דקות (קצב ${formatPace(FINAL_GOAL.paceMinPerKmBest)} דק'/ק"מ) ביום המירוץ, בעוד ${daysToRace} ימים (${dayToDate(TOTAL_PLAN_DAYS).toLocaleDateString("he-IL")}).
+
+היסטוריית כל הריצות עד כה (מתוכנן מול בפועל, מהישנה לחדשה):
+${historyLines || "אין ריצות קודמות"}
+
+התוכנית הנותרת (כל ימי הריצה המתוכננים, מהיום ועד המירוץ, כולל המשטח המתוכנן לכל אימון):
+${scheduleText || "אין ימי ריצה נותרים"}
+
+המשימה שלך: קבע אם בקצב ההתקדמות הנוכחי, הרץ אכן יגיע ליעד (10 ק"מ עד 49:59) ביום המירוץ.
+- אם כן (בקצב טוב, עומד ביעדים, אין סיבה מיוחדת לדאגה) - השב שהוא בקצב טוב, ואל תציע שינויים.
+- אם לא (נשאר מאחור בעקביות, סובל מקושי/פציעה/חוסר התקדמות בקצב, או להפך - מתקדם מהר יותר ממה שתוכנן) - בנה תוכנית מתוקנת לחלק מהימים הנותרים (לא חובה לכולם - רק לאלו שבאמת דורשים שינוי), שתחזיר אותו למסלול שמוביל ליעד עד יום המירוץ.
+
+חשוב מאוד: בריצות שמסומנות לעיל כ"אינטרוולים" - תתייחס לקצב העבודה בלבד (work pace) כמדד למאמץ ולהתקדמות, ולעולם לא לקצב הממוצע הכולל של הריצה (שכולל חימום/מנוחות/שחרור ולכן תמיד איטי יותר ולא משקף את היכולת בפועל). אל תשתמש בקצב הממוצע הכולל של ריצת אינטרוולים כראיה לכך שהרץ מאחור על המטרה.
+
+השב **רק** ב-JSON תקין (ללא טקסט נוסף, ללא markdown), במבנה הבא בדיוק:
+{
+  "onTrack": true או false,
+  "summary": "2-4 משפטים בעברית שמסבירים את ההערכה שלך - האם בקצב טוב למטרה, ולמה. אם בוצע שינוי, הסבר מה השתנה ולמה.",
+  "overrides": {
+    "<מספר היום בתוכנית>": {
+      "title": "כותרת קצרה לאימון המעודכן",
+      "desc": "תיאור מפורט של האימון המעודכן",
+      "distanceKm": מספר או null,
+      "paceTarget": [מספר_מינימלי, מספר_מקסימלי] או null,
+      "structure": "תיאור קצר של מבנה האימון",
+      "surface": "treadmill" או "outdoor" או "free" (שמור על המשטח המתוכנן המקורי אלא אם יש סיבה מקצועית לשנות אותו),
+      "reason": "הסבר קצר למה השתנה האימון הזה"
+    }
+  }
+}
+אם onTrack הוא true, overrides צריך להיות אובייקט ריק {}.
+אל תשנה ימי חדר כושר/רגליים/מנוחה - רק ימי ריצה ("run" או "race").
+אל תוסיף ימים שלא הופיעו ב"תוכנית הנותרת" למעלה.
+היה ריאליסטי וזהיר - אל תגדיל מרחקים בקפיצות גדולות, ואל תוריד מתחת למה שדרוש כדי להגיע מוכן למירוץ.
+שמור על ההיגיון המקצועי של חלוקת המשטחים: אינטרוולים/טמפו -> הליכון (בקרת קצב מדויקת), ריצת התאוששות -> חופשי, ריצת נפח/קצב מירוץ -> שטח (הסתגלות לתנאי המירוץ האמיתיים).`;
+
+  const raw = await callGroq(
+    [
+      { role: "system", content: "אתה מאמן ריצה מקצועי. אתה עונה רק ב-JSON תקין, בעברית בתוך הערכים." },
+      { role: "user", content: prompt },
+    ],
+    { temperature: 0.3, max_tokens: 2000, json: true }
+  );
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (e) {
+    console.error("Failed to parse feasibility JSON:", raw);
+    throw new Error("ה-AI החזיר תשובה לא תקינה (לא JSON) בבדיקת ההתקדמות למטרה.");
+  }
+
+  // נירמול overrides: מפתחות מספריים, וסינון ימים שאינם ימי ריצה/שלא קיימים בטווח
+  const VALID_SURFACES = new Set(Object.values(SURFACE));
+  const overrides = {};
+  if (parsed.overrides && typeof parsed.overrides === "object") {
+    for (const [dayStr, patch] of Object.entries(parsed.overrides)) {
+      const day = parseInt(dayStr, 10);
+      if (isNaN(day) || day < fromDay || day > TOTAL_PLAN_DAYS) continue;
+      const baseType = getWorkoutForDay(day).type;
+      if (baseType !== "run" && baseType !== "race") continue;
+      overrides[day] = {
+        title: patch.title || undefined,
+        desc: patch.desc || undefined,
+        distanceKm: patch.distanceKm ?? undefined,
+        paceTarget: Array.isArray(patch.paceTarget) ? patch.paceTarget : undefined,
+        structure: patch.structure || undefined,
+        surface: VALID_SURFACES.has(patch.surface) ? patch.surface : undefined,
+        reason: patch.reason || parsed.summary || "התאמת AI",
+      };
+    }
+  }
+
+  return {
+    onTrack: !!parsed.onTrack,
+    summary: parsed.summary || "",
+    overrides,
+  };
+}
+
+/**
+ * בונה את הפרומפט לניתוח הסטטוס הכללי - לבאנר "איפה אתה עומד" ולגרף סולם הקצב.
+ * שולח את כל היסטוריית הריצות עם אינדקס קבוע (#0, #1...) כדי שה-AI יוכל לסווג
+ * כל ריצה בנפרד (לצביעת הנקודות בגרף), ולתת הערכה כללית (לבאנר).
+ */
+function buildOverallStatusPrompt(allRuns, planDay) {
+  const phase = PHASES.find((p) => planDay >= p.weekStartDay && planDay <= p.weekEndDay) || PHASES[0];
+  const daysToRace = TOTAL_PLAN_DAYS - planDay;
+  const totalKm = allRuns.reduce((s, r) => s + (r.distanceKm || 0), 0);
+
+  const historyLines = allRuns
+    .map((r, i) => {
+      const d = new Date(r.date).toLocaleDateString("he-IL");
+      const w = getEffectiveWorkoutForDay(r.planDay ?? 0);
+      const targetTxt = w.paceTarget ? formatPaceRange(w.paceTarget) : "ללא יעד";
+      const effort = getEffortSummary(r);
+      const actualTxt = effort.isIntervalRun
+        ? `אינטרוולים: ${effort.workReps} חזרות, נפח עבודה ${effort.totalWorkKm} ק"מ, קצב עבודה ${formatPace(effort.workPaceMinPerKm)} דק'/ק"מ (קצב ממוצע כולל ${formatPace(r.avgPaceMinPerKm)} - לא רלוונטי לשיפוט, כולל חימום/מנוחות)`
+        : `${r.distanceKm} ק"מ בקצב ${formatPace(r.avgPaceMinPerKm)} דק'/ק"מ`;
+      return `ריצה #${i} - יום ${r.planDay} (${d}): תוכנן "${w.title}" (${w.distanceKm ?? "?"} ק"מ, יעד ${targetTxt}) | בפועל: ${actualTxt}`;
+    })
+    .join("\n");
+
+  return `אתה מאמן ריצה מקצועי שמלווה רץ בתוכנית אימונים לקראת מירוץ חיפה - ${FINAL_GOAL.distanceKm} ק"מ בקצב ${formatPace(FINAL_GOAL.paceMinPerKmBest)}-${formatPace(FINAL_GOAL.paceMinPerKmWorst)} דק'/ק"מ, בעוד ${daysToRace} ימים.
+
+הרץ נמצא כרגע בשלב "${phase.name}", ${totalKm.toFixed(1)} ק"מ נרצו בסה"כ לאורך ${allRuns.length} ריצות.
+
+היסטוריית כל הריצות (מהישנה לחדשה, כולל קצב עבודה אמיתי לריצות אינטרוולים שלא מוטה ע"י חימום/מנוחות):
+${historyLines || "אין ריצות עדיין"}
+
+המשימה שלך:
+1. תן הערכה קצרה של רמת הרץ הנוכחית (מתחיל בהתאוששות / מתקדם / קרוב ליעד וכו', לפי הקצב והנפח שנצפו).
+2. תן הערכה קצרה אחת על מגמת הקצב הממוצע שלו על פני הריצות (משתפר / יציב / מאט).
+3. סווג כל ריצה (לפי האינדקס # שניתן לה למעלה) כ-"onPace": true אם קצב העבודה האמיתי שלה (לא הממוצע הכולל אם זו ריצת אינטרוולים) היה בטווח היעד או קרוב אליו (בערך עד 15 שניות לק"מ איטי מהיעד), או "onPace": false אם היה איטי משמעותית מהיעד. אם לאימון אין יעד קצב בכלל - סווג onPace: true.
+4. קבע badge כללי למצב הנוכחי: "on-pace" אם המגמה הכוללת טובה, "warning" אם יש סימני אזהרה קלים אך לא חריגים, "behind" אם יש פיגור משמעותי ועקבי בכמה ריצות, "neutral" אם אין עדיין מספיק נתונים לקבוע.
+5. כתוב משפט קצר אחד-שניים שמתאר את המגמה הנראית בגרף קצב-מול-זמן (להצגה כתת-כיתוב מתחת לגרף) - האם מתקרב ליעד, יציב, או נשאר מאחור.
+
+חשוב: בריצות אינטרוולים תמיד תשפוט לפי קצב העבודה בלבד, לעולם לא לפי הקצב הממוצע הכולל (שכולל חימום/מנוחות ולכן איטי יותר ולא משקף את היכולת בפועל).
+
+השב **רק** ב-JSON תקין (ללא טקסט נוסף, ללא markdown), במבנה הבא בדיוק:
+{
+  "badge": "on-pace" או "warning" או "behind" או "neutral",
+  "title": "כותרת קצרה (3-6 מילים) שמסכמת את הסטטוס",
+  "level": "משפט קצר אחד שמתאר את רמת הרץ הנוכחית",
+  "avgPaceNote": "משפט קצר אחד על מגמת הקצב הממוצע על פני הריצות",
+  "summary": "פסקה ממש קצרה (2-3 משפטים) בעברית על המצב הכללי של הרץ",
+  "trendCaption": "משפט קצר אחד-שניים על המגמה הנראית בגרף קצב-מול-זמן",
+  "runStatus": [ {"index": 0, "onPace": true}, ... עבור כל ריצה לפי האינדקס שניתן לה למעלה, ללא החסרת אף ריצה ]
+}`;
+}
+
+/**
+ * ניתוח AI כללי של מצב הרץ - משמש גם לבאנר "איפה אתה עומד מול האימון האחרון"
+ * וגם לצביעת הנקודות + הכיתוב בגרף "סולם הקצב". נקרא פעם אחת ומשמש את שניהם
+ * (ראה getOverallStatus באפליקציה הראשית, שמטפלת בקאשינג).
+ */
+async function evaluateOverallStatus(allRuns, planDay) {
+  if (allRuns.length === 0) {
+    return {
+      badge: "neutral",
+      title: "עדיין אין נתונים",
+      level: "",
+      avgPaceNote: "",
+      summary: "העלה את הריצה הראשונה שלך כדי לקבל ניתוח AI על הסטטוס הכללי שלך.",
+      trendCaption: "",
+      runStatus: {},
+    };
+  }
+
+  const prompt = buildOverallStatusPrompt(allRuns, planDay);
+  const raw = await callGroq(
+    [
+      { role: "system", content: "אתה מאמן ריצה מקצועי. אתה עונה רק ב-JSON תקין, בעברית בתוך הערכים." },
+      { role: "user", content: prompt },
+    ],
+    { temperature: 0.4, max_tokens: 1400, json: true }
+  );
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (e) {
+    console.error("Failed to parse overall status JSON:", raw);
+    throw new Error("ה-AI החזיר תשובה לא תקינה (לא JSON) בניתוח הסטטוס הכללי.");
+  }
+
+  const runStatus = {};
+  if (Array.isArray(parsed.runStatus)) {
+    for (const item of parsed.runStatus) {
+      if (item && typeof item.index === "number") runStatus[item.index] = !!item.onPace;
+    }
+  }
+
+  const VALID_BADGES = new Set(["on-pace", "warning", "behind", "neutral"]);
+  return {
+    badge: VALID_BADGES.has(parsed.badge) ? parsed.badge : "neutral",
+    title: parsed.title || "",
+    level: parsed.level || "",
+    avgPaceNote: parsed.avgPaceNote || "",
+    summary: parsed.summary || "",
+    trendCaption: parsed.trendCaption || "",
+    runStatus,
+  };
+}
+
+
+async function chatWithCoach(userMessage, historyMessages, day, allRuns) {
+  const workout = getEffectiveWorkoutForDay(day ?? 0);
+  const phase = PHASES.find((p) => (day ?? 0) >= p.weekStartDay && (day ?? 0) <= p.weekEndDay) || PHASES[0];
+  const totalKm = allRuns.reduce((s, r) => s + (r.distanceKm || 0), 0);
+  const lastRun = allRuns[allRuns.length - 1];
+
+  // תקציר התוכנית הנותרת — 10 הימים הקרובים בלבד (כולל מנוחה וחדר כושר).
+  // הוקטן מ-60 יום ל-10: רוב השאלות בצ'אט נוגעות לטווח הקרוב, וחלון גדול
+  // יותר היה צורך טוקנים רבים מדי בכל הודעה בלי תועלת ממשית.
+  const upcomingLines = [];
+  for (let d = day; d <= Math.min(day + 10, TOTAL_PLAN_DAYS); d++) {
+    const w = getEffectiveWorkoutForDay(d);
+    const dateLabel = dateForPlanDay(d)?.toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit" }) || "";
+    const manualNote = manualDayOverrides[d] ? " [עודכן ידנית]" : (w.adjusted ? " [הותאם ע\"י AI]" : "");
+    if (w.type === "run" || w.type === "race") {
+      upcomingLines.push(`  יום ${d} (${dateLabel}, ${getRealDowName(d) || w.dowName}): "${w.title}" — ${w.distanceKm ? w.distanceKm + "ק\"מ" : "?"}, יעד: ${w.paceTarget ? formatPaceRange(w.paceTarget) : "ללא יעד"}, משטח: ${w.surface ? surfaceLabel(w.surface) : "?"}${manualNote}`);
+    } else {
+      // מנוחה / חדר כושר / כל סוג אחר
+      upcomingLines.push(`  יום ${d} (${dateLabel}, ${getRealDowName(d) || w.dowName}): "${w.title}" — ${w.type}${manualNote}`);
+    }
+  }
+
+  // היסטוריית ריצות בפועל (5 אחרונות בלבד - מספיק קונטקסט בלי לנפח את הפרומפט)
+  // לריצות אינטרוולים מציגים קצב עבודה אמיתי, לא ממוצע כולל מוטה ע"י חימום/מנוחות
+  const runHistoryLines = allRuns.slice(-5).map((r) => {
+    const d = new Date(r.date).toLocaleDateString("he-IL");
+    const w = getEffectiveWorkoutForDay(r.planDay ?? 0);
+    const targetTxt = w.paceTarget ? formatPaceRange(w.paceTarget) : "ללא יעד";
+    const effort = getEffortSummary(r);
+    const actualTxt = effort.isIntervalRun
+      ? `אינטרוולים: ${effort.workReps} חזרות, קצב עבודה ${formatPace(effort.workPaceMinPerKm)} דק'/ק"מ (ממוצע כולל עם חימום/מנוחות: ${formatPace(r.avgPaceMinPerKm)} - לא רלוונטי לשיפוט)`
+      : `${r.distanceKm}ק"מ בקצב ${formatPace(r.avgPaceMinPerKm)} דק'/ק"מ`;
+    return `  • יום ${r.planDay} (${d}): תוכנן "${w.title}" (${w.distanceKm ?? "?"}ק"מ, יעד ${targetTxt}) | בפועל: ${actualTxt}${r.avgHr ? ` | דופק: ${Math.round(r.avgHr)}` : ""}`;
+  }).join("\n") || "  (אין ריצות עדיין)";
+
+  // מידע על עדכונים ידניים פעילים
+  const manualOverrideLines = Object.entries(manualDayOverrides).map(([d, o]) =>
+    `  • יום ${d}: "${o.title}" — ${o.reason || "עדכון ידני"}`
+  ).join("\n") || "  (אין עדכונים ידניים)";
+
+  // גרסת תוכנית מתוקנת פעילה
+  const activeReplan = getActiveReplan();
+  const replanNote = activeReplan
+    ? `תוכנית מתוקנת פעילה (מיום ${activeReplan.fromDay}): ${activeReplan.summary || activeReplan.reason || "התאמת AI"}`
+    : "אין תוכנית מתוקנת פעילה כרגע — התוכנית המקורית בתוקף.";
+
+  // לריצה האחרונה - אותו תיקון: קצב עבודה אמיתי לאינטרוולים, לא ממוצע כולל מוטה
+  const lastRunEffort = lastRun ? getEffortSummary(lastRun) : null;
+  const lastRunPaceTxt = lastRun
+    ? (lastRunEffort.isIntervalRun
+        ? `${lastRun.distanceKm} ק"מ, קצב עבודה ${formatPace(lastRunEffort.workPaceMinPerKm)} דק'/ק"מ (ממוצע כולל עם חימום/מנוחות: ${formatPace(lastRun.avgPaceMinPerKm)})`
+        : `${lastRun.distanceKm} ק"מ בקצב ${formatPace(lastRun.avgPaceMinPerKm)} דק'/ק"מ`)
+    : "";
+
+  const contextSummary = `מידע רקע על המשתמש והתוכנית (לשימושך, אל תחזור על כולו בתשובה):
+- יעד: ${FINAL_GOAL.distanceKm} ק"מ עד 49:59 דקות ביום המירוץ (${dayToDate(TOTAL_PLAN_DAYS).toLocaleDateString("he-IL")}).
+- היום: יום ${day} בתוכנית, שבוע ${workout.weekNum}, שלב "${phase.name}".
+- האימון המתוכנן להיום: "${workout.title}" - ${workout.desc}${workout.surface ? ` (משטח: ${surfaceLabel(workout.surface)})` : ""}
+- סה"כ ק"מ שנרצו עד כה: ${totalKm.toFixed(1)} ק"מ, ${allRuns.length} ריצות.
+${lastRun ? `- הריצה האחרונה: ${lastRunPaceTxt}.` : "- עדיין לא הועלו ריצות."}
+- חלוקת המשטחים בתוכנית: ימי שני (אינטרוולים/טמפו) -> הליכון, ימי שישי (התאוששות) -> חופשי, ימי שבת (נפח/קצב מירוץ) -> שטח.
+
+היסטוריית ריצות בפועל (10 האחרונות, מישנה לחדשה):
+${runHistoryLines}
+
+עדכונים ידניים שהוחלו על ימים ספציפיים:
+${manualOverrideLines}
+
+מצב תוכנית: ${replanNote}
+
+אימוני ריצה קרובים (10 יום הבאים):
+${upcomingLines.join("\n") || "  (אין אימוני ריצה קרובים)"}`;
+
+  // שולחים למודל רק את 6 ההודעות האחרונות (כ-3 חליפות שאלה-תשובה) מתוך
+  // ההיסטוריה - לא את כל השיחה מתחילת הסשן. ההיסטוריה המלאה נשארת מוצגת
+  // למשתמש במסך (coachChatHistory), זה משפיע רק על מה שנשלח ל-AI בכל פעם.
+  const MAX_HISTORY_MESSAGES = 6;
+  const trimmedHistory = historyMessages.slice(-MAX_HISTORY_MESSAGES);
+
+  const messages = [
+    {
+      role: "system",
+      content: `אתה מאמן ריצה מקצועי, ישיר וחם, שמלווה רץ בתוכנית אימונים לקראת מירוץ חיפה (10 ק"מ). אתה עונה בעברית בלבד, בקצרה ולעניין. 
+
+**חשוב מאוד — יכולת עריכת התוכנית:**
+אתה יכול ומוסמך לשנות ולערוך את התוכנית בתגובה לבקשות המתאמן. אם המשתמש מבקש לשנות אימון ספציפי (קצב, מרחק, מבנה, יום, משטח), כמות חזרות, להוסיף מנוחה, לדחות אימון, לשנות סדר — ענה לו מה השינוי שאתה מאמץ ואז כתוב בדיוק את המשפט: "החלת שינוי: PLAN_EDIT:" ואחריו JSON מדויק בפורמט:
+{"day": <מספר יום>, "title": "...", "desc": "...", "distanceKm": <מספר או null>, "paceTarget": [<min>, <max>] או null, "structure": "...", "surface": "treadmill"|"outdoor"|"free", "reason": "בקשת המתאמן"}
+
+לדוגמה, אם המשתמש אומר "שנה את ריצת יום 5 ל-7 קמ קצב 5:30", תכתוב את השינוי ואז: "החלת שינוי: PLAN_EDIT: {"day":5,"title":"ריצת נפח","desc":"7 ק\"מ בקצב 5:30 דק'/ק\"מ","distanceKm":7,"paceTarget":[5.5,5.5],"structure":"7 ק\"מ, קצב 5:30/ק\"מ","surface":"outdoor","reason":"בקשת המתאמן"}"
+
+אם השינוי נוגע לכמה ימים, כתוב כמה שורות PLAN_EDIT נפרדות בזו אחר זו.
+אם השאלה רק עיונית (לא בקשה לשינוי) — ענה רגיל בלי PLAN_EDIT.
+
+${contextSummary}`,
+    },
+    ...trimmedHistory,
+    { role: "user", content: userMessage },
+  ];
+
+  return callGroq(messages, { temperature: 0.6, max_tokens: 900 });
+}
+
+/**
+ * המרת טקסט markdown-lite (**כותרת**) ל-HTML פשוט
+ */
+function renderAnalysisHTML(text) {
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br>");
+}
+
+
+// ===== app.js (main) =====
+// ============================================================
+// אפליקציה ראשית - חיבור כל החלקים
+// ============================================================
+
+// ---------- state ----------
+let allRuns = [];
+let planDay = getCurrentPlanDay();
+let coachChatHistory = []; // [{role, content}] - היסטוריית הצ'אט עם המאמן (זיכרון של הסשן הנוכחי)
+let lastFeasibilitySummary = null; // { onTrack, summary, createdAt } - תוצאת הבדיקה האחרונה
+
+// תוצאת ניתוח ה-AI הכוללת (לבאנר הסטטוס + לצביעת הנקודות/כיתוב בגרף סולם הקצב).
+// נשמרת בזיכרון לפי "מפתח" שמבוסס על מספר הריצות + הריצה האחרונה, כדי שלא
+// תישלח קריאה חדשה ל-AI בכל renderAll() - רק כשבאמת יש ריצה חדשה.
+let overallStatusCache = null; // { cacheKey, result }
+let overallStatusInFlight = null; // { cacheKey, promise } - בקשה שכבר רצה, כדי לא לכפול קריאות מ-renderStatusBanner ו-renderLadder יחד
+
+// ---------- DOM refs ----------
+const currentDayNumEl = document.getElementById("currentDayNum");
+const configNoticeEl = document.getElementById("configNotice");
+const statusBannerWrap = document.getElementById("statusBannerWrap");
+const statGrid = document.getElementById("statGrid");
+const ladderSvgContainer = document.getElementById("ladderSvgContainer");
+const ladderCaptionEl = document.getElementById("ladderCaption");
+const logContainer = document.getElementById("logContainer");
+const modalRoot = document.getElementById("modalRoot");
+const todayCardWrap = document.getElementById("todayCardWrap");
+const missedBannerWrap = document.getElementById("missedBannerWrap");
+const weekStripEl = document.getElementById("weekStrip");
+const phaseAheadWrapEl = document.getElementById("phaseAheadWrap");
+const phaseAheadNameEl = document.getElementById("phaseAheadName");
+const phaseStripEl = document.getElementById("phaseStrip");
+const replanBannerWrap = document.getElementById("replanBannerWrap");
+const coachBtn = document.getElementById("coachBtn");
+const coachPanelRoot = document.getElementById("coachPanelRoot");
+
+// ============================================================
+// אתחול
+// ============================================================
+async function init() {
+  checkConfig();
+  await loadOrSeedTrainingPlan();
+  renderDayPill();
+  await loadReplanVersions();
+  await loadManualDayOverrides();
+  await loadRuns();
+  wireCoachChat();
+}
+
+function checkConfig() {
+  const problems = [];
+  if (!isFirebaseReady()) {
+    problems.push("חיבור Firestore נכשל - בדוק את firebaseConfig בקובץ app.html.");
+  }
+  if (!GROQ_API_KEY || GROQ_API_KEY.startsWith("REPLACE_")) {
+    problems.push(
+      'לא הוגדר מפתח Groq תקין. פתח את <code>app.html</code>, חפש <code>REPLACE_WITH_YOUR_NEW_GROQ_KEY</code> והדבק שם מפתח חדש (קבל מפתח ב-console.groq.com/keys). אם הדבקת בעבר מפתח שעלה בצ\'אט, בטל אותו לפני שתיצור חדש.'
+    );
+  }
+  if (problems.length) {
+    configNoticeEl.style.display = "block";
+    configNoticeEl.innerHTML =
+      "<b>שים לב:</b> " + problems.join(" ");
+  }
+}
+
+function renderDayPill() {
+  planDay = getCurrentPlanDay();
+  currentDayNumEl.textContent = planDay != null ? planDay : "0";
+  const totalLabelEl = document.getElementById("totalDaysLabel");
+  if (totalLabelEl) totalLabelEl.textContent = TOTAL_PLAN_DAYS;
+}
+
+async function loadReplanVersions() {
+  try {
+    replanVersions = await fetchAllReplanVersions();
+  } catch (e) {
+    console.error("Failed to load replan versions:", e);
+    replanVersions = [];
+  }
+}
+
+async function loadManualDayOverrides() {
+  try {
+    const list = await fetchAllManualDayOverrides();
+    manualDayOverrides = {};
+    for (const item of list) {
+      if (item.day != null) manualDayOverrides[item.day] = item;
+    }
+  } catch (e) {
+    console.error("Failed to load manual day overrides:", e);
+    manualDayOverrides = {};
+  }
+}
+
+// ============================================================
+// חיווט כפתורי "העלה קובץ לאימון זה" / "העלה קובץ ליום X"
+// ============================================================
+function wireUploadForDayButtons(container) {
+  if (!container) return;
+  const buttons = container.querySelectorAll(".upload-for-day-btn");
+  
+  buttons.forEach((btn) => {
+    // מניעת כפל האזנות אם הפונקציה נקראת יותר מפעם אחת
+    if (btn.dataset.wired) return;
+    btn.dataset.wired = "true";
+
+    btn.addEventListener("click", () => {
+      const day = parseInt(btn.getAttribute("data-upload-day"), 10);
+      
+      // 1. יצירת האלמנט
+      const tempInput = document.createElement("input");
+      tempInput.type = "file";
+      tempInput.accept = ".gpx";
+      tempInput.multiple = true;
+      tempInput.style.display = "none";
+      
+      // קריטי: חייבים להזריק ל-DOM כדי שהדפדפן יאפשר את פתיחת החלונית!
+      document.body.appendChild(tempInput);
+
+      tempInput.addEventListener("change", async (e) => {
+        const files = Array.from(e.target.files || []).filter((f) =>
+          f.name.toLowerCase().endsWith(".gpx")
+        );
+        
+        // ניקוי מיידי מה-DOM לאחר בחירת הקובץ
+        if (tempInput.parentNode) {
+          document.body.removeChild(tempInput);
+        }
+
+        if (files.length === 0) {
+          alert("אנא בחר קובץ GPX");
+          return;
+        }
+
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "מעבד...";
+
+        try {
+          for (const file of files) {
+            await processSingleGpxFile(file, Number.isNaN(day) ? null : day);
+          }
+        } catch (err) {
+          console.error("Failed to process per-day upload:", err);
+          alert("שגיאה בעיבוד הקובץ: " + (err.message || err));
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          // קריאה לרינדור מחדש של האפליקציה
+          if (typeof renderAll === "function") {
+            renderAll();
+          }
+        }
+      });
+
+      // 2. הפעלת הלחיצה
+      tempInput.click();
+
+      // פתרון לבעיית ה-"Cancel": אם המשתמש סגר את החלונית בלי לבחור קובץ,
+      // ננקה את ה-input מה-DOM לאחר חצי שנייה כדי שלא יצטברו אלמנטים זבל.
+      setTimeout(() => {
+        if (tempInput.parentNode && !tempInput.value) {
+          document.body.removeChild(tempInput);
+        }
+      }, 500);
+    });
+  });
+}
+
+// ============================================================
+// עיבוד קובץ GPX בודד - שמירה, ניתוח AI ובדיקת התקדמות.
+// expectedDay (אופציונלי): היום שממנו נפתחה ההעלאה (למשל לחיצה על "העלה קובץ
+// לאימון זה" ביום ספציפי). אם תאריך הקובץ בפועל שונה מהיום שצויין - האימון
+// עדיין משויך ליום האמיתי שלו (לפי התאריך בקובץ), ונרשם כעדכון ידני חד-יומי
+// לאותו יום (חל רק על היום הזה, לא משפיע על שבועות אחרים), עם ניתוח כללי.
+// מחזיר: { runId, runDay, parsed, analysisError, wasUnexpectedDay }
+// ============================================================
+async function processSingleGpxFile(file, expectedDay = null) {
+  const text = await file.text();
+  const parsed = parseGPX(text, file.name);
+
+  const start = getStartDate();
+  const runDay = Math.max(0, Math.min(TOTAL_PLAN_DAYS, Math.floor((new Date(parsed.date) - start) / (1000 * 60 * 60 * 24))));
+  parsed.planDay = runDay;
+
+  const wasUnexpectedDay = expectedDay != null && runDay !== expectedDay;
+
+  // אם הקובץ נופל על יום אחר מהמתוכנן/הצפוי, ולאותו יום אין כבר אימון ספציפי
+  // שתועד בעצמו - נרשום אותו כעדכון ידני חד-יומי, עם תיאור כללי (ללא פרטי
+  // מבנה/קצב מדויקים, כי לא נמסרו), כך שהיום הזה יוצג נכון ביומן ובלוח השנה.
+  if (wasUnexpectedDay && !manualDayOverrides[runDay]) {
+    const baseWorkout = getWorkoutForDay(runDay);
+    const manualPatch = {
+      day: runDay,
+      type: "run",
+      title: "אימון ריצה (לא מתוכנן)",
+      desc: `אימון ריצה שתועד ביום זה ולא תאם את התוכנית המקורית (שתכננה "${baseWorkout.title}"). נרשם לפי קובץ ה-GPX שהועלה.`,
+      distanceKm: parsed.distanceKm,
+      paceTarget: null,
+      structure: null,
+      surface: null,
+      reason: "אימון בפועל שלא תאם את התוכנית - עודכן ידנית לפי קובץ שהועלה.",
+    };
+    try {
+      const overrideId = await saveManualDayOverride(manualPatch);
+      manualDayOverrides[runDay] = { id: overrideId, ...manualPatch };
+    } catch (e) {
+      console.error("Failed to save manual day override:", e);
+    }
+  }
+
+  const runId = await saveRun(parsed);
+  allRuns.push({ id: runId, ...parsed });
+
+  let analysisError = null;
+  try {
+    const analysisText = await analyzeRun(parsed, runDay, allRuns);
+    await updateRun(runId, { aiAnalysis: analysisText });
+    const idx = allRuns.findIndex((r) => r.id === runId);
+    if (idx >= 0) allRuns[idx].aiAnalysis = analysisText;
+  } catch (e) {
+    analysisError = e.message;
+    console.error(e);
+  }
+
+  try {
+    await runFeasibilityCheckAndMaybeReplan(runDay);
+  } catch (e) {
+    console.error("Feasibility check failed:", e);
+  }
+
+  return { runId, runDay, parsed, analysisError, wasUnexpectedDay };
+}
+
+// ============================================================
+// בדיקת התקדמות מול המטרה הסופית, ויישום אוטומטי של תוכנית מתוקנת אם צריך
+// ============================================================
+async function runFeasibilityCheckAndMaybeReplan(afterDay) {
+  const result = await evaluateGoalFeasibility(afterDay, allRuns);
+  if (result.onTrack || Object.keys(result.overrides).length === 0) {
+    lastFeasibilitySummary = { onTrack: true, summary: result.summary, createdAt: new Date().toISOString() };
+    renderReplanBanner();
+    return;
+  }
+  // לא בקצב למטרה - שומרים גרסת תוכנית מתוקנת חדשה ומחילים אותה אוטומטית
+  const newVersion = {
+    reason: result.summary,
+    summary: result.summary,
+    fromDay: afterDay + 1,
+    overrides: result.overrides,
+  };
+  const id = await saveReplanVersion(newVersion);
+  replanVersions.push({ id, ...newVersion, createdAt: new Date().toISOString() });
+  lastFeasibilitySummary = { onTrack: false, summary: result.summary, createdAt: new Date().toISOString() };
+  renderReplanBanner();
+}
+
+// ============================================================
+// "חזרה אחורה" - מסיר את גרסת התוכנית המתוקנת האחרונה וחוזר לקודמת
+// ============================================================
+async function undoLastReplan() {
+  const active = getActiveReplan();
+  if (!active) return;
+  try {
+    await deleteReplanVersion(active.id);
+    replanVersions.pop();
+    renderReplanBanner();
+    renderAll();
+  } catch (e) {
+    alert("שגיאה בביטול ההתאמה: " + e.message);
+  }
+}
+
+// ============================================================
+// טעינת ריצות קיימות ורינדור כללי
+// ============================================================
+async function loadRuns() {
+  try {
+    allRuns = await fetchAllRuns();
+  } catch (e) {
+    console.error("Failed to load runs:", e);
+    allRuns = [];
+  }
+  renderAll();
+}
+
+function renderAll() {
+  renderReplanBanner();
+  renderTodayCard();
+  renderMissedBanner();
+  renderStatusBanner();
+  renderStatGrid();
+  renderWeekAhead();
+  renderPhaseAhead();
+  renderPhaseStrip();
+  renderLadder();
+  renderLog();
+  wireUploadForDayButtons(document.body);
+}
+
+// ============================================================
+// בדיקה אם יום ריצה מתוכנן יש לו ריצה תואמת שהועלתה
+// ============================================================
+function findRunForDay(day) {
+  return allRuns.find((r) => r.planDay === day) || null;
+}
+
+function getMissedRunDays() {
+  if (planDay == null) return [];
+  const missed = [];
+  for (let d = 0; d <= Math.min(planDay, TOTAL_PLAN_DAYS); d++) {
+    const workout = getEffectiveWorkoutForDay(d);
+    if ((workout.type === "run" || workout.type === "race") && !findRunForDay(d)) {
+      missed.push({ day: d, workout });
+    }
+  }
+  return missed;
+}
+
+// ============================================================
+// כרטיס "האימון של היום" - האלמנט המרכזי החדש
+// ============================================================
+function renderTodayCard() {
+  const day = planDay ?? 0;
+  const workout = getEffectiveWorkoutForDay(day);
+  
+  // הגנה קטנה: אם לא נמצא אימון ליום הזה, נעצור כדי למנוע קריסה
+  if (!workout) {
+    if (todayCardWrap) todayCardWrap.innerHTML = "<p>לא נמצא אימון ליום זה.</p>";
+    return;
+  }
+
+  const existingRun = findRunForDay(day);
+  const phase = PHASES.find((p) => day >= p.weekStartDay && day <= p.weekEndDay) || PHASES[0];
+  const isRunType = workout.type === "run" || workout.type === "race";
+  const intervalHtml = isRunType ? parseIntervalStructure(workout.structure) : null;
+
+  const stripeClass = workout.type === "run" || workout.type === "race" ? "run"
+    : workout.type === "legs" ? "legs"
+    : workout.type === "rest" ? "rest"
+    : "strength";
+
+  let detailsHtml = "";
+  if (workout.distanceKm) {
+    detailsHtml += `<div class="workout-detail">
+      <div class="label">מרחק מתוכנן</div>
+      <div class="value">${workout.distanceKm} ק״מ</div>
+    </div>`;
+  }
+  if (workout.paceTarget) {
+    detailsHtml += `<div class="workout-detail">
+      <div class="label">יעד קצב</div>
+      <div class="value" style="font-size:16px;">${formatPaceRange(workout.paceTarget)}</div>
+    </div>`;
+  }
+  
+  if (isRunType) {
+    detailsHtml += `<div class="workout-detail">
+      <div class="label">שלב בתוכנית</div>
+      <div class="value" style="font-size:15px;">${phase.num}. ${phase.name}</div>
+    </div>`;
+  }
+
+  // --- תיקון ה-if שהיה שבור כאן ---
+  let adjustedNote = "";
+  if (workout.adjustmentReasons && workout.adjustmentReasons.length > 0) {
+    adjustedNote = `<div style="margin-top:12px;font-size:12.5px;color:var(--violet);">אימון זה הותאם ע"י ה-AI: ${workout.adjustmentReasons.map(escapeHtml).join("; ")}</div>`;
+  }
+  
+  if (workout.manuallyReplaced) {
+    adjustedNote += `<div style="margin-top:12px;font-size:12.5px;color:var(--cyan);">האימון ביום זה עודכן ידנית לפי קובץ שהועלה (חל על היום הזה בלבד, ולא משפיע על שבועות אחרים בתוכנית).</div>`;
+  }
+
+  // העלאת קובץ רלוונטית רק לימי ריצה/מירוץ - בימי מנוחה/חדר כושר/רגליים אין
+  // מה להעלות, ולכן לא מוצג כפתור או הודעת "ממתין להעלאה" בכלל.
+  let runStatusNote = "";
+  if (isRunType) {
+    if (existingRun) {
+      runStatusNote = `<div style="margin-top:14px;padding:12px 14px;background:var(--mint-dim);border-radius:10px;font-size:13.5px;">
+        כבר הועלתה ריצה ליום זה: ${existingRun.distanceKm?.toFixed(2)} ק״מ בקצב ${formatPace(existingRun.avgPaceMinPerKm)} דק'/ק״מ.
+      </div>`;
+    } else {
+      runStatusNote = `<div style="margin-top:14px;padding:12px 14px;background:var(--amber-dim);border-radius:10px;font-size:13.5px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <span>עדיין לא הועלה קובץ לאימון זה.</span>
+        <button class="upload-for-day-btn" data-upload-day="${day}">העלה קובץ לאימון זה</button>
+      </div>`;
+    }
+  }
+
+  todayCardWrap.innerHTML = `
+    <div class="today-card">
+      <div class="stripe ${stripeClass}"></div>
+      <div class="today-card-inner">
+        <div class="today-top-row">
+          <div>
+            <div class="today-phase-tag">${getRealDowName(day) || workout.dowName || ""} · יום ${day} מתוך ${TOTAL_PLAN_DAYS}</div>
+            <div class="today-title">${escapeHtml(workout.title)}</div>
+            <div class="today-daylabel">שבוע ${workout.weekNum ?? phase.num} בתוכנית</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            ${isRunType ? `<div class="today-week-marker">שלב ${phase.num} מתוך 4</div>` : ""}
+            ${isRunType && workout.surface ? surfaceTagHtml(workout.surface) : ""}
+          </div>
+        </div>
+        ${detailsHtml ? `<div class="workout-detail-grid">${detailsHtml}</div>` : ""}
+        <div class="today-desc">${intervalHtml || escapeHtml(workout.desc || "")}</div>
+        ${adjustedNote}
+        ${runStatusNote}
+      </div>
+    </div>`;
+
+  wireUploadForDayButtons(todayCardWrap);
+} // <-- סגירה תקינה של הפונקציה כולה
+
+// ============================================================
+// באנר אימוני ריצה שהיו אמורים לקרות ולא הועלו עדיין
+// ============================================================
+function renderMissedBanner() {
+  const missed = getMissedRunDays().filter((m) => m.day !== (planDay ?? 0)); // לא כופלים את היום הנוכחי, שכבר מוצג בכרטיס
+  if (missed.length === 0) {
+    missedBannerWrap.innerHTML = "";
+    return;
+  }
+  const count = missed.length;
+  const last = missed[missed.length - 1];
+  missedBannerWrap.innerHTML = `
+    <div class="missed-banner">
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="2" rx="1"/><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+      </div>
+      <div class="txt">
+        <b>${count} ${count === 1 ? "אימון ריצה" : "אימוני ריצה"} ממתינ${count === 1 ? "ה" : "ים"} להעלאה</b>
+        <p>למשל יום ${last.day}: "${escapeHtml(last.workout.title)}" (${last.workout.distanceKm ? last.workout.distanceKm + ' ק״מ' : ''}${last.workout.surface ? ', ' + surfaceLabel(last.workout.surface) : ''}).</p>
+      </div>
+      <button class="upload-for-day-btn" data-upload-day="${last.day}">העלה קובץ ליום ${last.day}</button>
+    </div>`;
+} // <-- סגירת הסוגריים המסולסלים שהייתה חסרה כאן
+
+// ============================================================
+// בנר סטטוס: האם האימון האחרון עמד ביעד שלו
+// ============================================================
+/**
+ * מחזיר את ניתוח ה-AI הכללי (badge/title/level/avgPaceNote/summary/trendCaption/runStatus),
+ * עם קאשינג בזיכרון לפי "מפתח" שמבוסס על מספר הריצות + מזהה הריצה האחרונה - כדי
+ * שלא תישלח קריאה חדשה ל-AI בכל renderAll(), רק כשבאמת נוספה ריצה.
+ * משמש גם את renderStatusBanner וגם את renderLadder - אם שניהם נקראים באותו
+ * renderAll() ועדיין אין קאש תקף, הם משתפים את אותה קריאת AI בודדת (overallStatusInFlight)
+ * במקום לשלוח שתי בקשות זהות.
+ */
+function overallStatusCacheKey() {
+  const last = allRuns[allRuns.length - 1];
+  return `${allRuns.length}_${last ? (last.id || last.date) : "none"}`;
+}
+
+function getOverallStatus() {
+  const key = overallStatusCacheKey();
+
+  if (overallStatusCache && overallStatusCache.cacheKey === key) {
+    return Promise.resolve(overallStatusCache.result);
+  }
+  if (overallStatusInFlight && overallStatusInFlight.cacheKey === key) {
+    return overallStatusInFlight.promise;
+  }
+
+  const promise = evaluateOverallStatus(allRuns, planDay)
+    .then((result) => {
+      overallStatusCache = { cacheKey: key, result };
+      overallStatusInFlight = null;
+      return result;
+    })
+    .catch((e) => {
+      overallStatusInFlight = null;
+      throw e;
+    });
+
+  overallStatusInFlight = { cacheKey: key, promise };
+  return promise;
+}
+
+function renderStatusBanner() {
+  if (allRuns.length === 0) {
+    statusBannerWrap.innerHTML = `
+      <div class="status-banner neutral">
+        <div class="badge">—</div>
+        <div>
+          <h3>עדיין אין נתונים</h3>
+          <p>העלה את הריצה הראשונה שלך כדי לראות איפה אתה עומד מול האימון המתוכנן.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const BADGE_ICON = { "on-pace": "✓", warning: "!", behind: "⚠", neutral: "ℹ" };
+
+  // מצב טעינה מיידי - מוחלף בניתוח ה-AI כשהוא יחזור
+  statusBannerWrap.innerHTML = `
+    <div class="status-banner neutral">
+      <div class="badge">…</div>
+      <div>
+        <h3>מנתח את הסטטוס שלך...</h3>
+        <p>ה-AI בודק את היסטוריית הריצות שלך כדי לתת הערכה כללית.</p>
+      </div>
+    </div>`;
+
+  getOverallStatus()
+    .then((status) => {
+      if (!status) return;
+      statusBannerWrap.innerHTML = `
+        <div class="status-banner ${status.badge}">
+          <div class="badge">${BADGE_ICON[status.badge] || "ℹ"}</div>
+          <div>
+            <h3>${escapeHtml(status.title || "הסטטוס שלך")}</h3>
+            ${status.level ? `<p>${escapeHtml(status.level)}</p>` : ""}
+            ${status.avgPaceNote ? `<p>${escapeHtml(status.avgPaceNote)}</p>` : ""}
+            <p style="margin-top:8px;">${escapeHtml(status.summary || "")}</p>
+          </div>
+        </div>`;
+    })
+    .catch((e) => {
+      console.error("Overall status AI failed:", e);
+      statusBannerWrap.innerHTML = `
+        <div class="status-banner neutral">
+          <div class="badge">⚠</div>
+          <div>
+            <h3>לא ניתן לטעון ניתוח AI כרגע</h3>
+            <p>${escapeHtml(e.message || "שגיאה לא ידועה")}</p>
+          </div>
+        </div>`;
+    });
+}
+
+// ============================================================
+// בנר תוכנית מתוקנת - מציג את הערכת ה-AI האחרונה לגבי המטרה, ומאפשר
+// "חזרה אחורה" לגרסה הקודמת אם בוצע שינוי אוטומטי בתוכנית.
+// ============================================================
+function renderReplanBanner() {
+  const active = getActiveReplan();
+
+  if (active) {
+    replanBannerWrap.innerHTML = `
+      <div class="replan-banner changed">
+        <div class="badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div style="flex:1;">
+          <h3>ה-AI עדכן את התוכנית</h3>
+          <p>${escapeHtml(active.summary || active.reason || "")}</p>
+          <button class="undo-btn" id="undoReplanBtn">↩ חזרה אחורה לתוכנית הקודמת</button>
+        </div>
+      </div>`;
+    const undoBtn = document.getElementById("undoReplanBtn");
+    if (undoBtn) undoBtn.addEventListener("click", undoLastReplan);
+    return;
+  }
+
+  if (lastFeasibilitySummary && lastFeasibilitySummary.onTrack) {
+    replanBannerWrap.innerHTML = `
+      <div class="replan-banner ontrack">
+        <div class="badge" style="font-size:20px;color:var(--mint);">✓</div>
+        <div>
+          <h3>אתה בקצב טוב למטרה</h3>
+          <p>${escapeHtml(lastFeasibilitySummary.summary || "")}</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  replanBannerWrap.innerHTML = "";
+}
+
+// ============================================================
+// פאנל "דבר עם המאמן" - צ'אט חופשי עם ה-AI על התוכנית, נגיש מכל מקום
+// ============================================================
+function wireCoachChat() {
+  if (coachBtn) coachBtn.addEventListener("click", openCoachPanel);
+}
+
+function openCoachPanel() {
+  coachPanelRoot.innerHTML = `
+    <div class="coach-overlay" id="coachOverlay">
+      <div class="coach-panel">
+        <div class="coach-header">
+          <h3>דבר עם המאמן</h3>
+          <button class="modal-close" id="coachCloseBtn">×</button>
+        </div>
+        <div class="coach-messages" id="coachMessages"></div>
+        <div class="coach-input-row">
+          <input type="text" id="coachInput" placeholder="שאל את המאמן על התוכנית..." autocomplete="off">
+          <button class="coach-send-btn" id="coachSendBtn">שלח</button>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById("coachOverlay").addEventListener("click", (e) => {
+    if (e.target.id === "coachOverlay") closeCoachPanel();
+  });
+  document.getElementById("coachCloseBtn").addEventListener("click", closeCoachPanel);
+
+  const input = document.getElementById("coachInput");
+  const sendBtn = document.getElementById("coachSendBtn");
+  sendBtn.addEventListener("click", sendCoachMessage);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendCoachMessage();
+  });
+
+  renderCoachMessages();
+  input.focus();
+}
+
+function closeCoachPanel() {
+  coachPanelRoot.innerHTML = "";
+}
+
+function renderCoachMessages() {
+  const wrap = document.getElementById("coachMessages");
+  if (!wrap) return;
+  if (coachChatHistory.length === 0) {
+    wrap.innerHTML = `<div class="coach-empty">שאל אותי כל דבר על התוכנית — למה אימון מסוים נראה כך, האם להליכון או לשטח, ואיך להתכונן ליום המירוץ.<br><br>אתה גם יכול לבקש ממני לשנות אימונים ספציפיים: "שנה את ריצת יום 5 ל-8 קמ", "הפוך את האינטרוולים ביום 7 ל-6×400", ואני אעדכן את התוכנית ישירות.</div>`;
+    return;
+  }
+  wrap.innerHTML = coachChatHistory
+    .map((m) => {
+      if (m.role === "user") {
+        return `<div class="coach-msg user">${escapeHtml(m.content)}</div>`;
+      }
+      // Clean up PLAN_EDIT raw JSON from display, replace with a styled notice
+      let displayContent = m.content;
+      const editMatches = [...displayContent.matchAll(/החלת שינוי: PLAN_EDIT:\s*(\{[\s\S]*?\})/g)];
+      if (editMatches.length > 0) {
+        let updatedContent = displayContent;
+        for (const match of editMatches) {
+          let dayLabel = "";
+          try { const p = JSON.parse(match[1]); dayLabel = p.day != null ? ` ליום ${p.day}` : ""; } catch(e) {}
+          updatedContent = updatedContent.replace(match[0], `<span style="display:inline-block;margin-top:6px;padding:5px 10px;background:var(--violet-dim);border:1px solid rgba(157,141,241,0.35);border-radius:8px;font-size:12.5px;color:var(--violet);">עדכון תוכנית הוחל${dayLabel}</span>`);
+        }
+        return `<div class="coach-msg assistant">${updatedContent}</div>`;
+      }
+      return `<div class="coach-msg assistant">${renderAnalysisHTML(m.content)}</div>`;
+    })
+    .join("");
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+async function sendCoachMessage() {
+  const input = document.getElementById("coachInput");
+  const sendBtn = document.getElementById("coachSendBtn");
+  const text = input.value.trim();
+  if (!text) return;
+
+  coachChatHistory.push({ role: "user", content: text });
+  input.value = "";
+  renderCoachMessages();
+
+  const wrap = document.getElementById("coachMessages");
+  sendBtn.disabled = true;
+  input.disabled = true;
+  const loadingEl = document.createElement("div");
+  loadingEl.className = "coach-msg assistant loading";
+  loadingEl.innerHTML = `<div class="spinner"></div> חושב...`;
+  wrap.appendChild(loadingEl);
+  wrap.scrollTop = wrap.scrollHeight;
+
+  try {
+    const reply = await chatWithCoach(text, coachChatHistory.slice(0, -1), planDay, allRuns);
+    coachChatHistory.push({ role: "assistant", content: reply });
+
+    // זיהוי ויישום עריכות תוכנית שה-AI הכניס בתשובה
+    const editMatches = [...reply.matchAll(/PLAN_EDIT:\s*(\{[\s\S]*?\})/g)];
+    if (editMatches.length > 0) {
+      let editCount = 0;
+      let editErrors = [];
+      for (const match of editMatches) {
+        try {
+          const patch = JSON.parse(match[1]);
+          const editDay = parseInt(patch.day, 10);
+          if (isNaN(editDay) || editDay < 0 || editDay > TOTAL_PLAN_DAYS) {
+            editErrors.push(`יום לא תקין: ${patch.day}`);
+            continue;
+          }
+          const baseWorkout = getWorkoutForDay(editDay);
+          const isRunWorkout = baseWorkout.type === "run" || baseWorkout.type === "race";
+          const VALID_SURFACES = new Set(Object.values(SURFACE));
+
+          // type נשאר כפי שהיה ביום הזה (run/race/legs/rest/strength וכו'),
+          // אלא אם המאמן ביקש סוג חדש מפורשות בפאץ' שלו.
+          const effectiveType = patch.type || baseWorkout.type;
+
+          const cleanPatch = isRunWorkout
+            ? {
+                day: editDay,
+                type: effectiveType,
+                title: patch.title || baseWorkout.title,
+                desc: patch.desc || baseWorkout.desc,
+                distanceKm: patch.distanceKm ?? baseWorkout.distanceKm,
+                paceTarget: Array.isArray(patch.paceTarget) ? patch.paceTarget : baseWorkout.paceTarget,
+                structure: patch.structure || baseWorkout.structure,
+                surface: VALID_SURFACES.has(patch.surface) ? patch.surface : baseWorkout.surface,
+                weekNum: baseWorkout.weekNum,
+                dowName: baseWorkout.dowName,
+                reason: patch.reason || "עדכון ע\"י המאמן בצ'אט",
+              }
+            : {
+                // ימי כוח / מנוחה / רגליים וכו' — בלי שדות ספציפיים לריצה
+                day: editDay,
+                type: effectiveType,
+                title: patch.title || baseWorkout.title,
+                desc: patch.desc || baseWorkout.desc,
+                structure: patch.structure || baseWorkout.structure,
+                weekNum: baseWorkout.weekNum,
+                dowName: baseWorkout.dowName,
+                reason: patch.reason || "עדכון ע\"י המאמן בצ'אט",
+              };
+          try {
+            // שמירה ב-Firestore (trainingPlan collection) ועדכון הcache המקומי
+            await updateWorkoutForDay(editDay, cleanPatch);
+            // שמירה גם כ-manualDayOverride כדי לסמן שהשינוי הוא ידני (לא AI-replan)
+            if (manualDayOverrides[editDay]) {
+              // אם כבר קיים override — עדכן אותו
+              try {
+                await deleteManualDayOverride(manualDayOverrides[editDay].id);
+              } catch(e) { /* בסדר אם נכשל המחיקה */ }
+            }
+            const overrideId = await saveManualDayOverride(cleanPatch);
+            manualDayOverrides[editDay] = { id: overrideId, ...cleanPatch };
+            editCount++;
+          } catch (e) {
+            console.error(`Failed to save coach plan edit for day ${editDay}:`, e);
+            editErrors.push(`יום ${editDay}: שגיאה בשמירה — ${e.message}`);
+          }
+        } catch (parseErr) {
+          console.error("Failed to parse PLAN_EDIT JSON:", match[1], parseErr);
+          editErrors.push("שגיאה בפענוח JSON של עדכון");
+        }
+      }
+      if (editCount > 0) {
+        renderAll();
+      }
+      if (editErrors.length > 0) {
+        // הוספת הודעת שגיאה לשיחה
+        coachChatHistory.push({ role: "assistant", content: `⚠️ שגיאות בהחלת עדכונים:\n${editErrors.join("\n")}` });
+        renderCoachMessages();
+      }
+    }
+  } catch (e) {
+    coachChatHistory.push({ role: "assistant", content: "סליחה, הייתה שגיאה: " + e.message });
+  }
+  sendBtn.disabled = false;
+  input.disabled = false;
+  renderCoachMessages();
+  input.focus();
+}
+
+// ============================================================
+// כרטיסי נתונים
+// ============================================================
+function renderStatGrid() {
+  if (allRuns.length === 0) {
+    statGrid.innerHTML = "";
+    return;
+  }
+  const totalKm = allRuns.reduce((s, r) => s + (r.distanceKm || 0), 0);
+  const last = allRuns[allRuns.length - 1];
+  const lastWorkout = getEffectiveWorkoutForDay(last.planDay ?? planDay ?? 0);
+  const targetMid = lastWorkout.paceTarget ? (lastWorkout.paceTarget[0] + lastWorkout.paceTarget[1]) / 2 : null;
+
+  // לריצות אינטרוולים מציגים את קצב העבודה האמיתי (מהסגמנטים שזוהו ב-GPS),
+  // לא את הקצב הממוצע הכולל - שמוטה כלפי איטי ע"י חימום/מנוחות/שחרור ומציג
+  // מספר מטעה (לדוגמה 5:00 בעבודה בפועל מוצג כ-7:22 בממוצע הכולל).
+  const lastEffort = getEffortSummary(last);
+  const lastPace = lastEffort.isIntervalRun ? lastEffort.workPaceMinPerKm : last.avgPaceMinPerKm;
+  const paceLabel = lastEffort.isIntervalRun ? "ריצה אחרונה (קצב עבודה)" : "ריצה אחרונה";
+  const paceDelta = lastPace != null && targetMid != null ? lastPace - targetMid : null;
+  const longestRun = allRuns.reduce((max, r) => (r.distanceKm > (max?.distanceKm || 0) ? r : max), null);
+
+  statGrid.innerHTML = `
+    <div class="stat-card">
+      <div class="label">סה״כ ק״מ שנרצו</div>
+      <div class="value">${totalKm.toFixed(1)}<span class="unit">ק״מ</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">${paceLabel}</div>
+      <div class="value">${formatPace(lastPace)}<span class="unit">דק'/ק״מ</span></div>
+      ${paceDelta != null ? `<div class="delta ${paceDelta <= 0 ? "pos" : "neg"}">${paceDelta <= 0 ? "מהיר מיעד האימון ב-" : "איטי מיעד האימון ב-"}${formatPace(Math.abs(paceDelta))}</div>` : `<div class="delta">אין יעד קצב לאימון זה</div>`}
+      ${lastEffort.isIntervalRun ? `<div class="delta" style="color:var(--steel);">ממוצע כולל (עם חימום/מנוחות): ${formatPace(last.avgPaceMinPerKm)}</div>` : ""}
+    </div>
+    <div class="stat-card">
+      <div class="label">ריצה הארוכה ביותר</div>
+      <div class="value">${longestRun?.distanceKm?.toFixed(1) ?? "—"}<span class="unit">ק״מ</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">סה״כ ריצות נרשמו</div>
+      <div class="value">${allRuns.length}</div>
+    </div>
+  `;
+}
+
+// ============================================================
+// השבוע הזה - משאר היום הנוכחי עד סוף השבוע הנוכחי בתוכנית (שבת)
+// ============================================================
+function renderWeekAhead() {
+  const day0 = planDay ?? 0;
+  const todayDateObj = dateForPlanDay(day0);
+  // כמה ימים נשארו עד סוף השבוע הקלנדרי האמיתי (כולל היום עצמו) - שבת.
+  // משתמשים בתאריך האמיתי (ולא ב"דאו" הפנימי של תוכן האימון) כדי שתמיד
+  // יוצגו בדיוק 7 ימים (ראשון-שבת), גם בשבועות תוכנית שמתוחים ל-8 ימים.
+  const realDow = todayDateObj ? todayDateObj.getDay() : 0; // 0=ראשון...6=שבת
+  const daysLeftInWeek = 7 - realDow;
+  let html = "";
+  for (let i = 0; i < daysLeftInWeek; i++) {
+    const d = day0 + i;
+    if (d > TOTAL_PLAN_DAYS) break;
+    const workout = getEffectiveWorkoutForDay(d);
+    const isToday = i === 0;
+    const dateObj = dateForPlanDay(d);
+    const dateLabel = dateObj ? dateObj.toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit" }) : "";
+    const dayName = (getRealDowName(d) || workout.dowName || "").replace("יום ", "");
+    const isRunType = workout.type === "run" || workout.type === "race";
+    html += `<div class="week-day-card ${isToday ? "is-today" : ""}">
+      <div class="dname">${dayName}${dateLabel ? " · " + dateLabel : ""}</div>
+      <div class="dicon"></div>
+      <div class="dtype">${escapeHtml(workout.title)}</div>
+      ${workout.distanceKm ? `<div class="ddist">${workout.distanceKm} ק״מ</div>` : ""}
+      ${isRunType && workout.surface ? `<div class="dsurface">${surfaceTagHtml(workout.surface, "small")}</div>` : ""}
+    </div>`;
+  }
+  weekStripEl.innerHTML = html;
+}
+
+// ============================================================
+// המשך השלב - כל הימים שנותרו בשלב הנוכחי, אחרי השבוע הזה ועד לסוף השלב.
+// מציג רשימה מקובצת לפי שבוע, עם דגש על ימי ריצה (שגם ה-AI יכול להתאים).
+// ============================================================
+function renderPhaseAhead() {
+  const day0 = planDay ?? 0;
+  const phase = PHASES.find((p) => day0 >= p.weekStartDay && day0 <= p.weekEndDay) || PHASES[0];
+  phaseAheadNameEl.textContent = `שלב ${phase.num} (${phase.name})`;
+
+  const todayDateObj = dateForPlanDay(day0);
+  // אותו חישוב בדיוק כמו ב-renderWeekAhead, כדי שהגבול בין "השבוע הזה"
+  // לבין "המשך השלב" יתאים תמיד למעבר הקלנדרי האמיתי (שבת -> ראשון),
+  // ולא ישאיר/יכפיל יום בודד "תלוש" בתחילת הקיבוץ הבא.
+  const realDow = todayDateObj ? todayDateObj.getDay() : 0; // 0=ראשון...6=שבת
+  const daysLeftInWeek = 7 - realDow;
+  const aheadStart = day0 + daysLeftInWeek; // היום הראשון אחרי סוף השבוע הנוכחי
+  const aheadEnd = Math.min(phase.weekEndDay, TOTAL_PLAN_DAYS);
+
+  if (aheadStart > aheadEnd) {
+    phaseAheadWrapEl.innerHTML = `<div class="phase-ahead-empty">השבוע הזה הוא השבוע האחרון בשלב ${phase.num}. אחריו מתחיל השלב הבא בתוכנית.</div>`;
+    return;
+  }
+
+  // קיבוץ לפי שבוע (weekNum)
+  const byWeek = new Map();
+  for (let d = aheadStart; d <= aheadEnd; d++) {
+    const workout = getEffectiveWorkoutForDay(d);
+    const wn = workout.weekNum ?? dayToWeekNum(d);
+    if (!byWeek.has(wn)) byWeek.set(wn, []);
+    byWeek.get(wn).push({ day: d, workout });
+  }
+
+  let html = "";
+  for (const [wn, days] of byWeek) {
+    html += `<div class="phase-ahead-week">
+      <div class="phase-ahead-week-label">שבוע ${wn}</div>
+      ${days.map(({ day, workout }) => {
+        const isRunType = workout.type === "run" || workout.type === "race";
+        const dateObj = dateForPlanDay(day);
+        const dateLabel = dateObj ? dateObj.toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit" }) : "";
+        const dayName = (getRealDowName(day) || workout.dowName || "").replace("יום ", "");
+        const metaParts = [];
+        if (workout.distanceKm) metaParts.push(`${workout.distanceKm} ק״מ`);
+        if (workout.paceTarget) metaParts.push(formatPaceRange(workout.paceTarget));
+        return `<div class="phase-ahead-row ${isRunType ? "is-run" : "is-gym"}">
+          <div class="pa-icon"></div>
+          <div class="pa-day">${dayName}${dateLabel ? " · " + dateLabel : ""}</div>
+          <div class="pa-title">${escapeHtml(workout.title)}</div>
+          ${isRunType && workout.surface ? surfaceTagHtml(workout.surface, "small") : ""}
+          ${metaParts.length ? `<div class="pa-meta">${metaParts.join(" · ")}</div>` : ""}
+          ${workout.adjusted ? `<div class="pa-adjusted">הותאם</div>` : ""}
+        </div>`;
+      }).join("")}
+    </div>`;
+  }
+  phaseAheadWrapEl.innerHTML = html;
+}
+
+// ============================================================
+// רצועת השלבים
+// ============================================================
+function renderPhaseStrip() {
+  const day = planDay ?? 0;
+  phaseStripEl.innerHTML = PHASES.map((p) => {
+    const active = day >= p.weekStartDay && day <= p.weekEndDay;
+    return `<div class="phase-chip ${active ? "active" : ""}">
+      <div class="pnum">שלב ${p.num}</div>
+      <div class="pname">${escapeHtml(p.name)}</div>
+      <div class="prange">ימים ${p.weekStartDay}–${p.weekEndDay} (שבועות ${p.weeks[0]}–${p.weeks[1]})</div>
+    </div>`;
+  }).join("");
+}
+
+// ============================================================
+// סולם הקצב - האלמנט החתימה (קצב כללי לאורך התוכנית, להמחשת מגמה)
+// ============================================================
+function renderLadder() {
+  const W = 920, H = 360;
+  const padL = 70, padR = 30, padT = 24, padB = 50;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+
+  const paceMin = 4.5, paceMax = 8.0;
+  const dayToX = (d) => padL + (d / TOTAL_PLAN_DAYS) * plotW;
+  const paceToY = (p) => padT + ((p - paceMin) / (paceMax - paceMin)) * plotH;
+
+  let targetPath = "";
+  for (let d = 0; d <= TOTAL_PLAN_DAYS; d += 5) {
+    const x = dayToX(d);
+    const y = paceToY(targetPaceForDay(d));
+    targetPath += (d === 0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1) + " ";
+  }
+
+  const startDate = getStartDate();
+  // שומרים את האינדקס המקורי בתוך allRuns (לפני הסינון) - חיוני כדי להתאים כל
+  // נקודה לסיווג "onPace" שחזר מה-AI לפי אותו אינדקס #N שנשלח לו ב-buildOverallStatusPrompt.
+  const runDots = allRuns
+    .map((r, i) => ({ r, i }))
+    .filter(({ r }) => r.avgPaceMinPerKm != null)
+    .map(({ r, i }) => {
+      const runDate = new Date(r.date);
+      const dayOffset = startDate
+        ? Math.round((runDate - startDate) / (1000 * 60 * 60 * 24))
+        : 0;
+      const clampedDay = Math.max(0, Math.min(TOTAL_PLAN_DAYS, dayOffset));
+      const x = dayToX(clampedDay);
+      // לריצות אינטרוולים - הנקודה בגרף מבוססת על קצב העבודה האמיתי (מהסגמנטים שזוהו ב-GPS),
+      // לא על הקצב הממוצע הכולל, שתמיד מוטה כלפי איטי ע"י החימום/המנוחות/השחרור ומציג "מאחורי קצב"
+      // באופן שגוי גם כשכל החזרות בוצעו ביעד.
+      const effort = getEffortSummary(r);
+      const plotPace = effort.isIntervalRun ? effort.workPaceMinPerKm : r.avgPaceMinPerKm;
+      const y = paceToY(plotPace);
+      return { x, y, runIndex: i, run: r };
+    });
+
+  const milestoneMarks = MILESTONES.map((m) => {
+    const x = dayToX(m.day);
+    return `<line x1="${x}" y1="${padT}" x2="${x}" y2="${H - padB}" stroke="var(--line)" stroke-dasharray="3,4" stroke-width="1"/>
+            <text x="${x}" y="${H - padB + 22}" text-anchor="middle" font-size="11" fill="var(--chalk-dim)" font-family="Oswald">יום ${m.day}</text>`;
+  }).join("");
+
+  let yLabels = "";
+  for (let p = 5.0; p <= 8.0; p += 1.0) {
+    const y = paceToY(p);
+    yLabels += `<text x="${padL - 12}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--chalk-dim)" font-family="Oswald">${formatPace(p)}</text>
+                <line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="var(--line)" stroke-width="0.5"/>`;
+  }
+
+  const goalLabelY = paceToY(FINAL_GOAL.paceMinPerKmBest) - 10;
+
+  // צבע כל נקודה לפי סיווג ה-AI (status.runStatus[runIndex]) ולא לפי סף קבוע;
+  // runStatus יכול להיות null (עדיין לא חזרה תשובה מה-AI) - אז מציגים אפור עדיין-לא-ידוע.
+  function dotsSvgFor(runStatus) {
+    return runDots
+      .map((d) => {
+        const known = runStatus && Object.prototype.hasOwnProperty.call(runStatus, d.runIndex);
+        const color = known ? (runStatus[d.runIndex] ? "var(--mint)" : "var(--signal)") : "var(--steel)";
+        return `<circle cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="5" fill="${color}" stroke="var(--bg-card)" stroke-width="1.5" opacity="0.92"/>`;
+      })
+      .join("");
+  }
+
+  function buildSvg(runStatus) {
+    return `
+    <svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:680px;display:block;">
+      <text x="${padL}" y="16" font-size="12" fill="var(--steel)" font-family="Oswald" letter-spacing="1">קצב (דק׳/ק״מ) ↓ מהיר יותר</text>
+      ${yLabels}
+      ${milestoneMarks}
+      <path d="${targetPath}" fill="none" stroke="var(--steel)" stroke-width="2" stroke-dasharray="6,4"/>
+      <circle cx="${dayToX(TOTAL_PLAN_DAYS)}" cy="${paceToY(FINAL_GOAL.paceMinPerKmBest)}" r="6" fill="none" stroke="var(--mint)" stroke-width="2"/>
+      <text x="${dayToX(TOTAL_PLAN_DAYS) - 10}" y="${goalLabelY}" text-anchor="end" font-size="12" fill="var(--mint)" font-family="Oswald">יעד 5:00</text>
+      ${dotsSvgFor(runStatus)}
+    </svg>`;
+  }
+
+  // רינדור ראשוני - נקודות אפורות (עדיין לא ידוע מה-AI אם בקצב או לא) + כיתוב טעינה,
+  // ואז מחליפים את שניהם כשתשובת ה-AI (המשותפת עם הבאנר למעלה) חוזרת.
+  ladderSvgContainer.innerHTML = buildSvg(null);
+
+  if (allRuns.length === 0) {
+    if (ladderCaptionEl) {
+      ladderCaptionEl.className = "ladder-caption";
+      ladderCaptionEl.textContent = "עדיין אין ריצות להציג מגמה.";
+    }
+    return;
+  }
+
+  if (ladderCaptionEl) {
+    ladderCaptionEl.className = "ladder-caption loading";
+    ladderCaptionEl.textContent = "ה-AI מנתח את המגמה שלך בגרף...";
+  }
+
+  getOverallStatus()
+    .then((status) => {
+      if (!status) return;
+      ladderSvgContainer.innerHTML = buildSvg(status.runStatus);
+      if (ladderCaptionEl) {
+        ladderCaptionEl.className = "ladder-caption";
+        ladderCaptionEl.textContent = status.trendCaption || status.summary || "";
+      }
+    })
+    .catch((e) => {
+      console.error("Ladder AI status failed:", e);
+      if (ladderCaptionEl) {
+        ladderCaptionEl.className = "ladder-caption";
+        ladderCaptionEl.textContent = "לא ניתן לטעון את ניתוח ה-AI לגרף כרגע.";
+      }
+    });
+}
+
+// ============================================================
+// יומן ריצות (כולל שורות-רפאים לאימוני ריצה שלא הועלו)
+// ============================================================
+function renderLog() {
+  const missedDays = getMissedRunDays();
+  if (allRuns.length === 0 && missedDays.length === 0) {
+    logContainer.innerHTML = `
+      <div class="empty-state">
+        <div class="big">אין עדיין ריצות ביומן</div>
+        <div>העלה את ה-GPX הראשון שלך למעלה כדי להתחיל לעקוב.</div>
+      </div>`;
+    return;
+  }
+
+  // איחוד ריצות בפועל + ריצות חסרות, מסודר מהחדש לישן לפי יום בתוכנית
+  const combined = [
+    ...allRuns.map((r) => ({ kind: "run", day: r.planDay ?? null, run: r })),
+    ...missedDays.map((m) => ({ kind: "missing", day: m.day, workout: m.workout })),
+  ].sort((a, b) => (b.day ?? -1) - (a.day ?? -1));
+
+  const rows = combined
+    .map((item) => {
+      if (item.kind === "missing") {
+        const dateObj = dateForPlanDay(item.day);
+        const dateStr = dateObj ? dateObj.toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit", year: "2-digit" }) : `יום ${item.day}`;
+        const surfaceBit = item.workout.surface ? ` · ${surfaceLabel(item.workout.surface)}` : "";
+        return `<tr class="missed-row">
+          <td>${dateStr}</td>
+          <td>${item.workout.distanceKm ? item.workout.distanceKm.toFixed(2) + ' ק״מ (מתוכנן)' : '—'}</td>
+          <td>—</td>
+          <td><span class="pace-tag missed">לא הועלה</span></td>
+          <td>—</td>
+          <td>${escapeHtml(item.workout.title)}${surfaceBit}</td>
+        </tr>`;
+      }
+      const r = item.run;
+      const day = item.day ?? planDay ?? 0;
+      const workout = getEffectiveWorkoutForDay(day);
+      const effort = getEffortSummary(r);
+      // לריצות אינטרוולים שזוהו מה-GPS - שופטים לפי קצב העבודה האמיתי, לא לפי הממוצע הכולל
+      const judgePace = effort.isIntervalRun ? effort.workPaceMinPerKm : r.avgPaceMinPerKm;
+      let tagClass = "mid";
+      if (workout.paceTarget && judgePace != null) {
+        const [pMin, pMax] = workout.paceTarget;
+        if (judgePace <= pMax + 0.05) tagClass = "good";
+        else if (judgePace > pMax + 0.25) tagClass = "bad";
+      }
+      const dateStr = new Date(r.date).toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit", year: "2-digit" });
+      const hrCell = r.avgHr
+        ? Math.round(r.avgHr)
+        : `<button class="attach-hr-btn" data-attach-hr-run-id="${r.id}">העלה קובץ</button>`;
+      const paceTagTitle = effort.isIntervalRun
+        ? `קצב עבודה ב-${effort.workReps} חזרות (ממוצע כולל הריצה: ${formatPace(r.avgPaceMinPerKm)} דק'/ק"מ)`
+        : "";
+      return `<tr class="clickable" data-id="${r.id}">
+        <td>${dateStr}</td>
+        <td>${r.distanceKm?.toFixed(2) ?? "—"} ק״מ</td>
+        <td>${formatDuration(r.durationMin)}</td>
+        <td><span class="pace-tag ${tagClass}"${paceTagTitle ? ` title="${escapeHtml(paceTagTitle)}"` : ""}>${formatPace(judgePace)}${effort.isIntervalRun ? " ⚡" : ""}</span></td>
+        <td>${hrCell}</td>
+        <td>${r.aiAnalysis ? "הצג ניתוח" : "—"}</td>
+      </tr>`;
+    })
+    .join("");
+
+  logContainer.innerHTML = `
+    <table class="run-table">
+      <thead>
+        <tr>
+          <th>תאריך</th>
+          <th>מרחק</th>
+          <th>משך</th>
+          <th>קצב ממוצע</th>
+          <th>דופק ממוצע</th>
+          <th>פירוט</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  logContainer.querySelectorAll("tr.clickable").forEach((tr) => {
+    tr.addEventListener("click", () => openRunModal(tr.dataset.id));
+  });
+
+  wireAttachHrButtons(logContainer);
+}
+
+// ============================================================
+// חיווט כפתורי "העלה קובץ" בעמודת דופק ממוצע - מאפשר לצרף קובץ GPX
+// ספציפית לריצה קיימת כדי להוסיף לה נתוני דופק (ומדדים נוספים אם חסרים),
+// ללא יצירת ריצה כפולה. עובד על הריצה הקיימת לפי runId, לא לפי יום.
+// ============================================================
+function wireAttachHrButtons(container) {
+  if (!container) return;
+  container.querySelectorAll(".attach-hr-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // לא לפתוח את מודאל הריצה בלחיצה על הכפתור
+
+      const runId = btn.getAttribute("data-attach-hr-run-id");
+      const tempInput = document.createElement("input");
+      tempInput.type = "file";
+      tempInput.accept = ".gpx";
+      tempInput.style.display = "none";
+      document.body.appendChild(tempInput);
+
+      tempInput.addEventListener("change", async (ev) => {
+        const file = (ev.target.files || [])[0];
+        document.body.removeChild(tempInput);
+        if (!file || !file.name.toLowerCase().endsWith(".gpx")) {
+          alert("אנא בחר קובץ GPX");
+          return;
+        }
+
+        const originalLabel = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "מעבד...";
+
+        try {
+          const text = await file.text();
+          const parsed = parseGPX(text, file.name);
+          // מצרפים רק את שדות הדופק/מדדים נוספים לריצה הקיימת - לא דורסים
+          // מרחק/קצב/תאריך שכבר תועדו עם הקובץ המקורי.
+          const patch = {};
+          if (parsed.avgHr != null) patch.avgHr = parsed.avgHr;
+          if (parsed.maxHr != null) patch.maxHr = parsed.maxHr;
+          if (parsed.avgCadence != null) patch.avgCadence = parsed.avgCadence;
+
+          if (Object.keys(patch).length === 0) {
+            alert("הקובץ שנבחר לא מכיל נתוני דופק.");
+            return;
+          }
+
+          await updateRun(runId, patch);
+          const idx = allRuns.findIndex((r) => r.id === runId);
+          if (idx >= 0) allRuns[idx] = { ...allRuns[idx], ...patch };
+        } catch (err) {
+          console.error("Failed to attach HR data:", err);
+          alert("שגיאה בעיבוד הקובץ: " + (err.message || err));
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          renderLog();
+        }
+      });
+
+      tempInput.click();
+    });
+  });
+}
+
+// ============================================================
+// מודאל פרטי ריצה + ניתוח AI
+// ============================================================
+function openRunModal(runId) {
+  const run = allRuns.find((r) => r.id === runId);
+  if (!run) return;
+
+  const day = run.planDay ?? planDay ?? 0;
+  const workout = getEffectiveWorkoutForDay(day);
+
+  const dateStr = new Date(run.date).toLocaleDateString("he-IL", {
+    day: "2-digit", month: "long", year: "numeric",
+  });
+
+  const analysisHtml = run.aiAnalysis
+    ? `<div class="analysis-panel">${renderAnalysisHTML(run.aiAnalysis)}</div>`
+    : `<div class="analysis-panel loading" id="modalAnalysisLoading"><div class="spinner"></div> אין ניתוח שמור לריצה זו. <button class="ghost" id="retryAnalysisBtn" style="margin-right:auto;">נתח עכשיו</button></div>`;
+
+  // האם הריצה הזו (לפי היום שלה) היא ה"fromDay" של גרסת תוכנית מתוקנת קיימת
+  const triggeredReplan = replanVersions.find((v) => v.fromDay === day + 1);
+  const replanHtml = triggeredReplan
+    ? `<div class="adjust-panel">
+        <h4>ריצה זו הביאה לעדכון התוכנית</h4>
+        <div style="font-size:13.5px;">${escapeHtml(triggeredReplan.summary || triggeredReplan.reason || "")}</div>
+      </div>`
+    : "";
+
+  const isRunType = workout.type === "run" || workout.type === "race";
+
+  modalRoot.innerHTML = `
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <h3>${escapeHtml(workout.title)} — ${dateStr} <button class="modal-close" id="modalCloseBtn">×</button></h3>
+        <div style="font-size:13px;color:var(--chalk-dim);margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span>יום ${day} מתוך ${TOTAL_PLAN_DAYS} · ${escapeHtml(getRealDowName(day) || workout.dowName || "")} ${workout.structure ? "· " + escapeHtml(workout.structure) : ""}</span>
+          ${isRunType && workout.surface ? surfaceTagHtml(workout.surface, "small") : ""}
+        </div>
+        <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:6px;">
+          <div class="stat-card"><div class="label">מרחק בפועל</div><div class="value">${run.distanceKm?.toFixed(2)}<span class="unit">ק״מ</span></div></div>
+          <div class="stat-card"><div class="label">משך</div><div class="value" style="font-size:22px;">${formatDuration(run.durationMin)}</div></div>
+          <div class="stat-card"><div class="label">קצב</div><div class="value" style="font-size:22px;">${formatPace(run.avgPaceMinPerKm)}</div></div>
+          ${run.avgHr ? `<div class="stat-card"><div class="label">דופק ממוצע</div><div class="value">${Math.round(run.avgHr)}</div></div>` : ""}
+          ${run.avgCadence ? `<div class="stat-card"><div class="label">קצב צעדים</div><div class="value">${Math.round(run.avgCadence)}</div></div>` : ""}
+          ${run.elevGainM != null ? `<div class="stat-card"><div class="label">עלייה מצטברת</div><div class="value" style="font-size:22px;">${Math.round(run.elevGainM)}<span class="unit">מ'</span></div></div>` : ""}
+        </div>
+        ${workout.distanceKm ? `<div style="font-size:13px;color:var(--chalk-dim);margin-top:4px;">מתוכנן ליום זה: ${workout.distanceKm} ק״מ${workout.paceTarget ? ", יעד קצב " + formatPaceRange(workout.paceTarget) : ""}</div>` : ""}
+        ${analysisHtml}
+        ${replanHtml}
+      </div>
+    </div>`;
+
+  document.getElementById("modalOverlay").addEventListener("click", (e) => {
+    if (e.target.id === "modalOverlay") closeModal();
+  });
+  document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
+
+  const retryBtn = document.getElementById("retryAnalysisBtn");
+  if (retryBtn) {
+    retryBtn.addEventListener("click", async () => {
+      retryBtn.disabled = true;
+      retryBtn.textContent = "מנתח...";
+      try {
+        const text = await analyzeRun(run, day, allRuns);
+        await updateRun(run.id, { aiAnalysis: text });
+        const idx = allRuns.findIndex((r) => r.id === run.id);
+        if (idx >= 0) allRuns[idx].aiAnalysis = text;
+        openRunModal(run.id);
+        renderLog();
+      } catch (e) {
+        alert("הניתוח נכשל: " + e.message);
+        retryBtn.disabled = false;
+        retryBtn.textContent = "נתח עכשיו";
+      }
+    });
+  }
+}
+
+function closeModal() {
+  modalRoot.innerHTML = "";
+}
+
+// ============================================================
+// עזרים
+// ============================================================
+function escapeHtml(str) {
+  if (str == null) return "";
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// ---------- start ----------
+init();
+
+</script>
+</body>
+</html>
